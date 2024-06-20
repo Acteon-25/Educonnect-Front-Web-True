@@ -42,7 +42,7 @@ const LoginPage = () => {
           }
         })
         const ruta = resAsesor.data.idUsuario
-        navigate(`/login/${ruta}`)
+        navigate(`/login/asesor/${ruta}`)
 
       } else if (tipoUsuario == "ADMIN") {
 

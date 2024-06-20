@@ -20,7 +20,7 @@ import IngresarCalificacion from './pages/IngresarCalificacion'
 import PerfilUsuario from './pages/PerfilUsuario'
 import Pasarela from './pages/Pasarela'
 import PerfilAsesor from './pages/PerfilAsesor'
-
+import LoginUserAsesorPage from './pages/LoginUserAsesorPage'
 
 
 function App() {
@@ -36,6 +36,7 @@ function App() {
           <Route path="/registerAlumno" element={<RegisterPage />} />
           <Route path="/registerAsesor" element={<RegisterAsesorPage />} />
           <Route path="/login/:id" element={<LoginUserPage />} />
+          <Route path="/login/asesor/:id" element={<LoginUserAsesorPage />} />
           <Route path="/nosotros" element={<NosotrosPage />} />
           <Route path="/restablecer-clave" element={<RestablecerPage />} />
           <Route path="/biblioteca" element={<BibliotecaPage />} />
@@ -51,7 +52,6 @@ function App() {
           <Route path="/usuario/perfilUsuario" element={<PerfilUsuario />} />
           <Route path="/pasarela-pago/:plan/:precio" element={<Pasarela />}/>
           <Route path="/asesor/perfilAsesor" element={<PerfilAsesor />} />
-
         </Routes>
       </BrowserRouter>
     </>
