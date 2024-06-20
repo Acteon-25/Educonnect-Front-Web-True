@@ -41,7 +41,7 @@ const LoginPage = () => {
             'Authorization': `Bearer ${token}`
           }
         })
-        const ruta = resAsesor.data.idUsuario
+        const ruta = resAsesor.data.usuario.idUsuario
         navigate(`/login/asesor/${ruta}`)
 
       } else if (tipoUsuario == "ADMIN") {

@@ -1,4 +1,4 @@
-import { useEffect,useState } from 'react'
+import { useEffect, useState } from 'react'
 import Meeting from '../components/Meeting'
 import SideBar from '../components/SideBarAsesor'
 import Buscador from '../icons/Buscador.svg'
@@ -20,7 +20,8 @@ const LoginUserAsesorPage = () => {
       }
     })
       .then((res) => {
-        setNombre(res.data.nombre)
+        setNombre(res.data.usuario.nombre)
+        console.log(res.data)
       })
   }
 

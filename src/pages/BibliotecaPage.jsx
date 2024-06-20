@@ -3,25 +3,24 @@ import Libro from '../components/Libro';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import SectionContainer from '../components/SectionContainer';
+import axios from "axios";
 
 const BibliotecaPage = () => {
 
-  const [books, setBook] = useState()
+  const [data, setData] = useState(null);
 
   useEffect(() => {
-    const url = 'https://api.thecatapi.com/v1/images/search?limit=10';
-    async function fetchData() {
-    try {
-        const response = await fetch (url);
-        const data = await response.json();
-        setBook(data)
-    } catch (error) {
-      console.log('Error:', error);
-    }
-    } 
-    
-    fetchData()
-  }, [])
+    axios.get('https://biblioteca-digital-api-production.up.railway.app/api/contenido')
+      .then(response => {
+        setData(response.data);
+        console.log(response.data);
+        setLoading(false);
+      })
+      .catch(error => {
+        setError(error);
+        setLoading(false);
+      });
+  }, []);
 
   return (
 
@@ -31,9 +30,11 @@ const BibliotecaPage = () => {
         <h2 className='text-4xl'>Libros de la Biblioteca</h2>
         <p className='text-xl'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita quod sequi, magnam ipsam debitis excepturi?</p>
 
-        <ul className='grid grid-cols-3 gap-4 my-4 justify-items-center'>
-          {books?.map((book) => (<Libro key={book.id} title={book.id} imgUrl={book.url} />))}
 
+        <ul className='grid grid-cols-3 gap-4 my-4 justify-items-center'>
+          {data?.map((item) => (
+            <Libro key={item._id} title={item.titulo} imgUrl={item.caratula}></Libro>
+          ))}
         </ul>
 
       </SectionContainer>

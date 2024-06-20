@@ -21,7 +21,8 @@ import PerfilUsuario from './pages/PerfilUsuario'
 import Pasarela from './pages/Pasarela'
 import PerfilAsesor from './pages/PerfilAsesor'
 import LoginUserAsesorPage from './pages/LoginUserAsesorPage'
-
+import IngresarInformacionPage from "./pages/IngresarInformacionPage"
+import DescargarPage from "./pages/DescargarPage"
 
 function App() {
 
@@ -52,6 +53,8 @@ function App() {
           <Route path="/usuario/perfilUsuario" element={<PerfilUsuario />} />
           <Route path="/pasarela-pago/:plan/:precio" element={<Pasarela />}/>
           <Route path="/asesor/perfilAsesor" element={<PerfilAsesor />} />
+          <Route path="/asesor/ingresarInformacion" element={<IngresarInformacionPage />} />
+          <Route path="/descargar" element={<DescargarPage />} />
         </Routes>
       </BrowserRouter>
     </>
