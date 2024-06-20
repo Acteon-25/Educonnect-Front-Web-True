@@ -60,7 +60,6 @@ function PerfilAsesor() {
           Authorization: `Bearer ${token}`
         }
       }); 
-      console.log('object');
       setUsuario(formData);
       setEditando(false);
      
