@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import SideBar from '../components/SideBarAsesor'
 
 function PerfilAsesor() {
   const [usuario, setUsuario] = useState(null);
@@ -81,6 +82,7 @@ function PerfilAsesor() {
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
+      <SideBar />
       <div className="container mx-auto p-6 max-w-lg">
         <h1 className="text-3xl font-bold mb-6 text-center">Mi Perfil</h1>
         <form onSubmit={handleSubmit} className="bg-white rounded-lg shadow-lg p-6 space-y-6">

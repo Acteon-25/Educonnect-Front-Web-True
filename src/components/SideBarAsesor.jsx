@@ -21,13 +21,15 @@ const SideBar = () => {
             </svg>
           </button>
           <div className='text-center text-white text-xl hover:bg-orange-400 cursor-pointer py-3 mb-2'>
-            <Link to="/login/:id">Inicio</Link>
+            <Link to="/login/asesor/:id">Inicio</Link>
           </div>
           <div className='text-center text-white text-xl hover:bg-orange-400 cursor-pointer py-3 mb-2'>Agenda</div>
           <div className='text-center text-white text-xl hover:bg-orange-400 cursor-pointer py-3 mb-2'>Mensajes</div>
-          <div className='text-center text-white text-xl hover:bg-orange-400 cursor-pointer py-3 mb-2'>Ayuda y soporte</div>
+          <div className='text-center text-white text-xl hover:bg-orange-400 cursor-pointer py-3 mb-2'>
+            <Link to="/asesor/ingresarCalificacion">Ingresar Calificación</Link>
+          </div>
           <div  className='text-center text-white text-xl hover:bg-orange-400 cursor-pointer py-3 mb-2'>
-          <Link to="/usuario/perfilUsuario">Editar Perfil</Link>
+          <Link to="/asesor/perfilAsesor">Editar Perfil</Link>
           </div>
         </div>
       </div>
