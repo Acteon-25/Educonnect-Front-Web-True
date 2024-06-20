@@ -1,15 +1,19 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
-function PerfilUsuario() {
+function PerfilAsesor() {
   const [usuario, setUsuario] = useState(null);
   const [error, setError] = useState(null);
   const [editando, setEditando] = useState(false);
   const [formData, setFormData] = useState({
-    nombre: '',
-    correoElectronico: '',
-    tipoUsuario: '',
-    estado: '',
+    usuario: {
+        nombre: '',
+        correoElectronico: '',
+        tipoUsuario: '',
+        estado: '',
+    },
+
+    especialidad: ''
   });
 
   useEffect(() => {
@@ -20,7 +24,7 @@ function PerfilUsuario() {
           throw new Error('No hay token disponible');
         }
 
-        const response = await axios.get('http://localhost:8080/estudiantes/perfil', {
+        const response = await axios.get('http://localhost:8080/asesores/perfil', {
           headers: {
             Authorization: `Bearer ${token}`
           }
@@ -42,25 +46,30 @@ function PerfilUsuario() {
       ...formData,
       [event.target.name]: event.target.value
     });
+
+
   };
+
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
       const token = localStorage.getItem('token');
-      await axios.put('http://localhost:8080/estudiantes/actualizar', formData, {
+      await axios.put('http://localhost:8080/asesores/actualizar', formData, {
         headers: {
           Authorization: `Bearer ${token}`
         }
-      });
+      }); 
+      console.log('object');
       setUsuario(formData);
       setEditando(false);
+     
     } catch (error) {
       console.error('Error al actualizar el perfil:', error);
       setError('No se pudo actualizar el perfil.');
     }
+
     console.log(formData);
-    alert('Datos cambiados exitosamente exitoso')
   };
 
   if (error) {
@@ -83,7 +92,7 @@ function PerfilUsuario() {
             <input
               type="text"
               name="nombre"
-              value={formData.nombre || ''}
+              value={formData.usuario.nombre || ''}
               onChange={handleChange}
               className="p-3 rounded-md border border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
             />
@@ -95,7 +104,7 @@ function PerfilUsuario() {
             <input
               type="email"
               name="correoElectronico"
-              value={formData.correoElectronico || ''}
+              value={formData.usuario.correoElectronico || ''}
               onChange={handleChange}
               className="p-3 rounded-md border border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
             />
@@ -107,7 +116,7 @@ function PerfilUsuario() {
             <input
               type="text"
               name="tipoUsuario"
-              value={formData.tipoUsuario || ''}
+              value={formData.usuario.tipoUsuario|| ''}
               disabled= {!editando}
               onChange={handleChange}
               className="p-3 rounded-md border border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
@@ -120,7 +129,35 @@ function PerfilUsuario() {
             <input
               type="text"
               name="estado"
-              value={formData.estado || ''}
+              value={formData.usuario.estado || ''}
+              onChange={handleChange}
+              disabled= {!editando}
+              className="p-3 rounded-md border border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+            />
+          </div>
+
+          <div className="flex flex-col">
+            <label htmlFor="estado" className="mb-1 text-sm font-medium text-gray-700">
+              Especialidad:
+            </label>
+            <input
+              type="text"
+              name="estado"
+              value={formData.especialidad || ''}
+              onChange={handleChange}
+              disabled= {!editando}
+              className="p-3 rounded-md border border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+            />
+          </div>
+
+          <div className="flex flex-col">
+            <label htmlFor="estado" className="mb-1 text-sm font-medium text-gray-700">
+              Horario disponibles:
+            </label>
+            <input
+              type="text"
+              name="estado"
+              value={formData.horarioDisponibilidad || 'Sin horarios'}
               onChange={handleChange}
               disabled= {!editando}
               className="p-3 rounded-md border border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
@@ -138,4 +175,4 @@ function PerfilUsuario() {
   );
 }
 
-export default PerfilUsuario;
+export default PerfilAsesor;

@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
 
 const SideBar = () => {
   const [open, setOpen] = useState(false)
@@ -23,7 +24,9 @@ const SideBar = () => {
           <div className='text-center text-white text-xl hover:bg-orange-400 cursor-pointer py-3 mb-2'>Agenda</div>
           <div className='text-center text-white text-xl hover:bg-orange-400 cursor-pointer py-3 mb-2'>Mensajes</div>
           <div className='text-center text-white text-xl hover:bg-orange-400 cursor-pointer py-3 mb-2'>Ayuda y soporte</div>
-          <div className='text-center text-white text-xl hover:bg-orange-400 cursor-pointer py-3 mb-2'>Configuracion</div>
+          <div  className='text-center text-white text-xl hover:bg-orange-400 cursor-pointer py-3 mb-2'>
+          <Link to="/usuario/perfilUsuario">Editar Perfil</Link>
+          </div>
         </div>
       </div>
     </div>

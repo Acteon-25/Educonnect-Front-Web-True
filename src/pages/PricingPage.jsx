@@ -2,8 +2,8 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import PricingCard from "../components/PricingCard";
 
-const PricingPage = () => {
 
+const PricingPage = () => {
   return (
 <>
       <Header />
@@ -25,7 +25,7 @@ const PricingPage = () => {
             {/* Tarjeta Plan Básico */}
             <PricingCard
               plan="Básico"
-              precio="49.99/mes"
+              precio="49.99"
               caracteristicas={[
                 "Acceso a asesorias personalizadas",
                 "Soporte en horario laboral",
@@ -40,7 +40,7 @@ const PricingPage = () => {
             {/* Tarjeta Plan Premium */}
             <PricingCard
               plan="Premium"
-              precio="79.99/mes"
+              precio="79.99"
               caracteristicas={[
                 "Acceso ilimitado a la biblioteca virtual",
                 "Soporte 24hs",
@@ -56,7 +56,7 @@ const PricingPage = () => {
             {/* Tarjeta Plan Super ArchiMegaPremium */}
             <PricingCard
               plan="Super ArchiMegaPremium"
-              precio="119.99/mes"
+              precio="119.99"
               caracteristicas={[
                 "Asesorías múltiples en 1 día",
                 "Capacitación Soporte 24hs",
