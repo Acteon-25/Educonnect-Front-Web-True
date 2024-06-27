@@ -6,16 +6,7 @@ function PerfilAsesor() {
   const [usuario, setUsuario] = useState(null);
   const [error, setError] = useState(null);
   const [editando, setEditando] = useState(false);
-  const [formData, setFormData] = useState({
-    usuario: {
-        nombre: '',
-        correoElectronico: '',
-        tipoUsuario: '',
-        estado: '',
-    },
-
-    especialidad: ''
-  });
+  const [formData, setFormData] = useState({})
 
   useEffect(() => {
     const obtenerDatosUsuario = async () => {
@@ -32,7 +23,10 @@ function PerfilAsesor() {
         });
 
         setUsuario(response.data);
-        setFormData(response.data);
+        setFormData({
+          especialidad: response.data.especialidad,
+          horarioDisponibilidad: response.data.horarioDisponibilidad,
+        })
       } catch (error) {
         console.error('Error al obtener datos del usuario:', error);
         setError('No se pudo cargar la información del perfil.');
@@ -61,15 +55,14 @@ function PerfilAsesor() {
           Authorization: `Bearer ${token}`
         }
       }); 
-      setUsuario(formData);
-      setEditando(false);
+
+      alert("Se guardaron los cambios con exito")
      
     } catch (error) {
       console.error('Error al actualizar el perfil:', error);
       setError('No se pudo actualizar el perfil.');
     }
 
-    console.log(formData);
   };
 
   if (error) {
@@ -92,8 +85,9 @@ function PerfilAsesor() {
             </label>
             <input
               type="text"
+              disabled= {!editando}
               name="nombre"
-              value={formData.usuario.nombre || ''}
+              value={usuario.usuario.nombre || ''}
               onChange={handleChange}
               className="p-3 rounded-md border border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
             />
@@ -105,7 +99,8 @@ function PerfilAsesor() {
             <input
               type="email"
               name="correoElectronico"
-              value={formData.usuario.correoElectronico || ''}
+              value={usuario.usuario.correoElectronico || ''}
+              disabled= {!editando}
               onChange={handleChange}
               className="p-3 rounded-md border border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
             />
@@ -117,7 +112,7 @@ function PerfilAsesor() {
             <input
               type="text"
               name="tipoUsuario"
-              value={formData.usuario.tipoUsuario|| ''}
+              value={usuario.usuario.tipoUsuario|| ''}
               disabled= {!editando}
               onChange={handleChange}
               className="p-3 rounded-md border border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
@@ -130,7 +125,7 @@ function PerfilAsesor() {
             <input
               type="text"
               name="estado"
-              value={formData.usuario.estado || ''}
+              value={usuario.usuario.estado || ''}
               onChange={handleChange}
               disabled= {!editando}
               className="p-3 rounded-md border border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
@@ -143,10 +138,9 @@ function PerfilAsesor() {
             </label>
             <input
               type="text"
-              name="estado"
+              name="especialidad"
               value={formData.especialidad || ''}
               onChange={handleChange}
-              disabled= {!editando}
               className="p-3 rounded-md border border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
             />
           </div>
@@ -157,10 +151,9 @@ function PerfilAsesor() {
             </label>
             <input
               type="text"
-              name="estado"
-              value={formData.horarioDisponibilidad || 'Sin horarios'}
+              name="horarioDisponibilidad"
+              value={formData.horarioDisponibilidad}
               onChange={handleChange}
-              disabled= {!editando}
               className="p-3 rounded-md border border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
             />
           </div>
