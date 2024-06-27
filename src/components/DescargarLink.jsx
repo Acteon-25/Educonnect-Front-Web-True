@@ -17,10 +17,8 @@ function DescargarContenido({ contenidoId }) {
   }
 
   return (
-    <div>
-      <PDFDescarga urlEnlace={contenido.contenido} titulo={contenido.titulo}>
-        
-      </PDFDescarga>
+    <div className='flex items-center justify-center rounded-xl bg-green-700 p-2 m-2 text-center text-white'>
+      <PDFDescarga urlEnlace={contenido.contenido} titulo={contenido.titulo} />
     </div>
   );
 }
