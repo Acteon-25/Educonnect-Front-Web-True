@@ -14,9 +14,9 @@ function IngresarInformacionPage() {
 
       try {
         const token = localStorage.getItem('token');
-        const estudianteId = 25; // Reemplaza con el ID real del estudiante
+        const estudianteId = 16; // Reemplaza con el ID real del estudiante
         const response = await axios.post(
-          `http://localhost:8080/asesores/estudiantes/${estudianteId}/informes/2024/6`,
+          `http://localhost:8080/asesores/estudiantes/${estudianteId}/informes`,
           { contenido: informe },
           {
             headers: {

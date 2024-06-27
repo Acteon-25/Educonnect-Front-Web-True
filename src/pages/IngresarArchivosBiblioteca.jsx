@@ -41,11 +41,11 @@ function IngresarArchivosBiblioteca() {
           'Content-Type': 'multipart/form-data',
         },
       })
-      console.log('Calificación enviada:', response.data);
-      setMensaje('Calificación enviada con éxito');
+      console.log('Archivo enviado:', response.data);
+      setMensaje('Archivo enviado con éxito');
     } catch (error) {
-      console.error('Error al enviar calificación:', error);
-      setError('Error al enviar la calificación. Por favor, inténtalo de nuevo.');
+      console.error('Error al enviar Archivo:', error);
+      setError('Error al enviar la Archivo. Por favor, inténtalo de nuevo.');
     }
   };
 
