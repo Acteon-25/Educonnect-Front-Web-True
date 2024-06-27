@@ -14,11 +14,10 @@ const BibliotecaPage = () => {
       .then(response => {
         setData(response.data);
         console.log(response.data);
-        setLoading(false);
+
       })
       .catch(error => {
         setError(error);
-        setLoading(false);
       });
   }, []);
 
@@ -33,7 +32,8 @@ const BibliotecaPage = () => {
 
         <ul className='grid grid-cols-3 gap-4 my-4 justify-items-center'>
           {data?.map((item) => (
-            <Libro key={item._id} title={item.titulo} imgUrl={item.caratula}></Libro>
+            <Libro key={item._id} title={item.titulo} imgUrl={item.caratula} idContenido={item._id}></Libro>
+
           ))}
         </ul>
 

@@ -22,7 +22,8 @@ import Pasarela from './pages/Pasarela'
 import PerfilAsesor from './pages/PerfilAsesor'
 import LoginUserAsesorPage from './pages/LoginUserAsesorPage'
 import IngresarInformacionPage from "./pages/IngresarInformacionPage"
-import DescargarPage from "./pages/DescargarPage"
+import IngresarArchivosBiblioteca from "./pages/IngresarArchivosBiblioteca"
+
 
 function App() {
 
@@ -54,7 +55,7 @@ function App() {
           <Route path="/pasarela-pago/:plan/:precio" element={<Pasarela />}/>
           <Route path="/asesor/perfilAsesor" element={<PerfilAsesor />} />
           <Route path="/asesor/ingresarInformacion" element={<IngresarInformacionPage />} />
-          <Route path="/descargar" element={<DescargarPage />} />
+          <Route path="/ingresarArchivosBiblioteca" element={<IngresarArchivosBiblioteca />} />
         </Routes>
       </BrowserRouter>
     </>
