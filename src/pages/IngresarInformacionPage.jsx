@@ -60,7 +60,6 @@ function IngresarInformacionPage() {
       );
     }
   };
-
   const handleEstudianteChange = (event) => {
     const selectedNombre = event.target.value;
     const selectedEstudiante = usuarios.find(usuario => usuario.nombre === selectedNombre);
