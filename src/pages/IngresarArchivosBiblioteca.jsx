@@ -100,17 +100,17 @@ function IngresarArchivosBiblioteca() {
             <label className="block text-sm font-medium text-gray-700">
               Tipo:
             </label>
-            <select onChange={subirTipo} value={tipo}>
+            {/* <select onChange={subirTipo} value={tipo}>
               <option value="libro">Libro</option>
               <option value="imagen">Imagen</option>
               <option value="video">Video</option>
-            </select>
-            {/* <input
+            </select> */}
+            <input
               type="text"
               value={tipo}
               onChange={(e) => setTipo(e.target.value)}
               className="mt-1 p-2 block w-full rounded-md border border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-            /> */}
+            />
           </div>
 
           <div>
@@ -136,7 +136,7 @@ function IngresarArchivosBiblioteca() {
           </div>
 
           <button type="submit" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-            Enviar Informe
+            Enviar Archivo
           </button>
         </form>
       </div>
