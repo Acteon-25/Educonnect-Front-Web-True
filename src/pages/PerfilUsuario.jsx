@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 function PerfilUsuario() {
+  const navigate = useNavigate();
   const [usuario, setUsuario] = useState(null);
   const [error, setError] = useState(null);
   const [editando, setEditando] = useState(false);
@@ -72,7 +74,8 @@ function PerfilUsuario() {
   }
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100">
+    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
+      <button className='bg-indigo-500 hover:bg-indigo-700 text-white py-2 px-4 rounded' onClick={() => navigate(-1)}>Volver</button>
       <div className="container mx-auto p-6 max-w-lg">
         <h1 className="text-3xl font-bold mb-6 text-center">Mi Perfil</h1>
         <form onSubmit={handleSubmit} className="bg-white rounded-lg shadow-lg p-6 space-y-6">
@@ -108,7 +111,7 @@ function PerfilUsuario() {
               type="text"
               name="tipoUsuario"
               value={formData.tipoUsuario || ''}
-              disabled= {!editando}
+              disabled={!editando}
               onChange={handleChange}
               className="p-3 rounded-md border border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
             />
@@ -122,7 +125,7 @@ function PerfilUsuario() {
               name="estado"
               value={formData.estado || ''}
               onChange={handleChange}
-              disabled= {!editando}
+              disabled={!editando}
               className="p-3 rounded-md border border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
             />
           </div>

@@ -23,7 +23,7 @@ import PerfilAsesor from './pages/PerfilAsesor'
 import LoginUserAsesorPage from './pages/LoginUserAsesorPage'
 import IngresarInformacionPage from "./pages/IngresarInformacionPage"
 import IngresarArchivosBiblioteca from "./pages/IngresarArchivosBiblioteca"
-
+import ConfiguracionesUsuarioPage from "./pages/ConfiguracionesUsuarioPage"
 
 function App() {
 
@@ -56,6 +56,7 @@ function App() {
           <Route path="/asesor/perfilAsesor" element={<PerfilAsesor />} />
           <Route path="/asesor/ingresarInformacion" element={<IngresarInformacionPage />} />
           <Route path="/ingresarArchivosBiblioteca" element={<IngresarArchivosBiblioteca />} />
+          <Route path="/configuracionesUsuario" element={<ConfiguracionesUsuarioPage />} />
         </Routes>
       </BrowserRouter>
     </>

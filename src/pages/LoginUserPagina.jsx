@@ -1,15 +1,17 @@
-import { useEffect,useState } from 'react'
+import { useEffect, useState } from 'react'
 import Meeting from '../components/Meeting'
 import SideBar from '../components/SideBar'
 import Buscador from '../icons/Buscador.svg'
 import Notification from '../icons/Notification.svg'
 import Foto from '../img/Foto.png'
 import axios from "axios"
+import { useNavigate } from 'react-router-dom'
 
 
 const token = localStorage.getItem("token")
 
 const LoginUserPage = () => {
+  const navigate = useNavigate()
 
   const [nombre, setNombre] = useState('')
 
@@ -28,13 +30,21 @@ const LoginUserPage = () => {
     getNombre();
   }, []);
 
+  const clearLocalStorage = () => {
+    localStorage.clear();
+    navigate('/');
+  };
+
   return (
     <div className="">
       <SideBar />
 
       <div className='flex px-10 pb-10 pt-20 gap-4 w-screen justify-between'>
         <div className='flex float-right  gap-1'>
-          <img src={Buscador} alt="" />
+
+        <button onClick={clearLocalStorage}>Clear Local Storage</button>
+        
+        <img src={Buscador} alt="" />
           <input type="text" placeholder='Buscar' />
         </div>
         <div className='flex float-left gap-4'>
