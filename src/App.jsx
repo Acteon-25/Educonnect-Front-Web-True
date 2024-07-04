@@ -25,6 +25,8 @@ import IngresarInformacionPage from "./pages/IngresarInformacionPage"
 import IngresarArchivosBiblioteca from "./pages/IngresarArchivosBiblioteca"
 import ConfiguracionesUsuarioPage from "./pages/ConfiguracionesUsuarioPage"
 import DisponibilidadAsesorPage from "./pages/DisponibilidadAsesorPage"
+import RegistrarAsesoria from './pages/RegistrarAsesoria'
+
 
 function App() {
 
@@ -57,6 +59,7 @@ function App() {
           <Route path="/asesor/perfilAsesor" element={<PerfilAsesor />} />
           <Route path="/asesor/ingresarInformacion" element={<IngresarInformacionPage />} />
           <Route path="/ingresarArchivosBiblioteca" element={<IngresarArchivosBiblioteca />} />
+          <Route path="/registrarAsesoria" element={<RegistrarAsesoria />} />
           <Route path="/configuracionesUsuario" element={<ConfiguracionesUsuarioPage />} />
           <Route path="/disponibilidadAsesor" element={<DisponibilidadAsesorPage />} />
         </Routes>
