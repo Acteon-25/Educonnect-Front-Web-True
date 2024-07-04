@@ -32,6 +32,7 @@ const LoginPage = () => {
           }
         })
         const ruta = resEstudiante.data.idUsuario
+        localStorage.setItem('id', ruta);
         navigate(`/login/${ruta}`)
 
       } else if (tipoUsuario == "ASESOR") {
@@ -42,6 +43,9 @@ const LoginPage = () => {
           }
         })
         const ruta = resAsesor.data.usuario.idUsuario
+        console.log(resAsesor.data.idAsesor)
+        const ruta2 = resAsesor.data.idAsesor
+        localStorage.setItem('id', ruta2);
         navigate(`/login/asesor/${ruta}`)
 
       } else if (tipoUsuario == "ADMIN") {
