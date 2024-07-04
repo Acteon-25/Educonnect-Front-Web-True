@@ -145,18 +145,6 @@ function PerfilAsesor() {
             />
           </div>
 
-          <div className="flex flex-col">
-            <label htmlFor="estado" className="mb-1 text-sm font-medium text-gray-700">
-              Horario disponibles:
-            </label>
-            <input
-              type="text"
-              name="horarioDisponibilidad"
-              value={formData.horarioDisponibilidad}
-              onChange={handleChange}
-              className="p-3 rounded-md border border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-            />
-          </div>
           <button
             type="submit"
             className="w-full bg-indigo-600 text-white p-3 rounded-md shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"

@@ -6,15 +6,7 @@ const id = localStorage.getItem("id")
 function DisponibilidadAsesorPage() {
 
 
-  const [horarios, setHorarios] = useState({
-    lunes: [],
-    martes: [],
-    miercoles: [],
-    jueves: [],
-    viernes: [],
-    sabado: [],
-    domingo: [],
-  })
+  
 
 
   const handleSubmit = async (event) => {
@@ -41,9 +33,7 @@ function DisponibilidadAsesorPage() {
     }
   };
 
-  const handleChange = (event) => {
-      console.log(event.target.options);
-  }
+
 
   return (
     <div className="flex">
@@ -52,20 +42,6 @@ function DisponibilidadAsesorPage() {
           <h1 className="text-2xl font-bold mb-4 text-center">Horario del Asesor</h1>
 
           <form onSubmit={handleSubmit}>
-            <select id="horarios" name="horarios" required onChange={handleChange}>
-              <optgroup label="Mañana">
-                <option value="09:00-12:00">09:00 - 12:00</option>
-              </optgroup>
-              <optgroup label="Tarde">
-                <option value="14:00-18:00">14:00 - 18:00</option>
-              </optgroup>
-              <optgroup label="Noche">
-                <option value="18:00-22:00">18:00 - 22:00</option>
-              </optgroup>
-              <option value="">Sin disponibilidad</option>
-            </select>
-
-            <input list="intervalos" />
 
             <button
               className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full"

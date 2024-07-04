@@ -2,6 +2,7 @@
 // import axios from "axios";
 import SideBar from "../components/SideBarAsesor";
 import { useForm } from 'react-hook-form'
+import { useEffect } from 'react'
 
 
 function RegistrarAsesoria() {
@@ -12,6 +13,10 @@ function RegistrarAsesoria() {
     console.log(data);
   }
 
+  useEffect(() => {
+
+  }, [])
+
   return (
     <div className="flex">
       <SideBar />
@@ -21,6 +26,10 @@ function RegistrarAsesoria() {
             Registrar Asesoria
           </h1>
           <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
+
+            <datalist id="asesores">
+              <option value="Hector"></option>
+            </datalist>
             <div>
               <label
                 htmlFor="asesor"
@@ -35,12 +44,18 @@ function RegistrarAsesoria() {
                     value: 20,
                     message: 'Maximo caracteres 20'
                   }})}
-                type="text"
+                list="asesores"
                 id="asesor"
                 className="mt-1 p-3 block w-full rounded-md border border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
               />
                {errors.asesor && <p className="text-red-600 mt-2 text-sm">{errors.asesor.message}</p>}
             </div>
+
+                  
+            <datalist id="fechasDisponibles">
+              <option value="Alumno"></option>
+
+            </datalist>
             <div>
               <label
                 htmlFor="sesion"
@@ -63,29 +78,6 @@ function RegistrarAsesoria() {
               
                {errors.fecha && <p className="text-red-600 mt-2 text-sm">{errors.fecha.message}</p>}
             </div>
-            <div>
-              <label
-                htmlFor="materia"
-                className="block text-lg font-medium text-gray-700"
-              >
-                Materia:
-              </label>
-              <input
-                {...register('materia', { 
-                  required: 'Campo Requerido',
-                  maxLength: {
-                    value: 20,
-                    message: 'Maximo caracteres 20'
-                  }})}
-                type="text"
-                id="materia"
-                className="mt-1 p-3 block w-full rounded-md border border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-              />
-               {errors.materia && <p className="text-red-600 mt-2 text-sm">{errors.materia.message}</p>}
-            </div>
-
-
-
             <button
               type="submit"
               className="bg-indigo-600 hover:bg-indigo-800 text-white font-bold py-3 px-6 rounded w-full transition duration-300"
