@@ -5,7 +5,7 @@ import SideBar from '../components/SideBarAsesor'
 function PerfilAsesor() {
   const [usuario, setUsuario] = useState(null);
   const [error, setError] = useState(null);
-  const [editando, setEditando] = useState(false);
+  // const [editando, setEditando] = useState(false);
   const [formData, setFormData] = useState({})
 
   useEffect(() => {
@@ -85,7 +85,7 @@ function PerfilAsesor() {
             </label>
             <input
               type="text"
-              disabled= {!editando}
+              disabled= {true}
               name="nombre"
               value={usuario.usuario.nombre || ''}
               onChange={handleChange}
@@ -100,7 +100,7 @@ function PerfilAsesor() {
               type="email"
               name="correoElectronico"
               value={usuario.usuario.correoElectronico || ''}
-              disabled= {!editando}
+              disabled= {true}
               onChange={handleChange}
               className="p-3 rounded-md border border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
             />
@@ -113,7 +113,7 @@ function PerfilAsesor() {
               type="text"
               name="tipoUsuario"
               value={usuario.usuario.tipoUsuario|| ''}
-              disabled= {!editando}
+              disabled= {true}
               onChange={handleChange}
               className="p-3 rounded-md border border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
             />
@@ -127,7 +127,7 @@ function PerfilAsesor() {
               name="estado"
               value={usuario.usuario.estado || ''}
               onChange={handleChange}
-              disabled= {!editando}
+              disabled= {true}
               className="p-3 rounded-md border border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
             />
           </div>
