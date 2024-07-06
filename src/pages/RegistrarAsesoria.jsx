@@ -1,8 +1,7 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import SideBar from "../components/SideBarAsesor";
 import { useForm } from "react-hook-form";
-import { useEffect } from "react";
 
 function RegistrarAsesoria() {
   const {
@@ -12,13 +11,35 @@ function RegistrarAsesoria() {
   } = useForm();
 
   const [asesores, setAsesores] = useState([]);
-  const [horarios, setHorarios] = useState([]);
-  const [dia, setDia] = useState();
+  const [horarios, setHorarios] = useState({});
+  const [intervalo, setIntervalo] = useState();
+  const [asesorSeleccionado, setAsesorSeleccionado] = useState();
 
   const onSubmit = (data) => {
-    console.log(data);
-    const dia = new Date(data.dia)
-    console.log(dia);
+    const token = localStorage.getItem("token");
+    console.log(token);
+    const { dia, hora } = data;
+    const sesion = {
+      fechaHora: `${dia}T${hora}:00`,
+      idAsesor: asesorSeleccionado,
+    };
+    console.log(sesion);
+
+    const enviarSesion = async () => {
+      try {
+        await axios.post("http://localhost:8080/sesiones/solicitar", sesion, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        alert("Sesión creada");
+      } catch (e) {
+        console.log(e);
+        alert("Horario no disponible");
+      }
+    };
+
+    enviarSesion();
   };
 
   useEffect(() => {
@@ -49,18 +70,25 @@ function RegistrarAsesoria() {
       (asesor) => asesor.usuario.nombre === selectedNombre
     );
     const selectedHorario = selectedAsesor.horarioDisponibilidad;
-    setHorarios(selectedHorario);
+    setHorarios(JSON.parse(selectedHorario));
+    setAsesorSeleccionado(selectedAsesor.idAsesor);
   };
 
   const handleChangeDia = (event) => {
     const selectedFecha = event.target.value;
-    const diasSemana = ['lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado','domingo'];
+    const diasSemana = [
+      "domingo",
+      "lunes",
+      "martes",
+      "miércoles",
+      "jueves",
+      "viernes",
+      "sábado",
+    ];
     const selectedDia = diasSemana[new Date(selectedFecha).getDay()];
 
-    const horarioSeleccionado = horarios[selectedDia];
-    console.log(horarioSeleccionado);
+    setIntervalo(horarios[selectedDia]);
   };
-  
 
   return (
     <div className="flex">
@@ -68,7 +96,7 @@ function RegistrarAsesoria() {
       <div className="flex flex-col items-center justify-center w-full min-h-screen bg-gray-100 p-4">
         <div className="bg-white shadow-lg rounded-lg p-8 w-full max-w-lg">
           <h1 className="text-3xl font-bold mb-6 text-center text-indigo-600">
-            Registrar Asesoria
+            Registrar Asesoría
           </h1>
           <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
             <div>
@@ -78,16 +106,19 @@ function RegistrarAsesoria() {
               >
                 Asesor:
               </label>
-
-              <select id="asesores" name="asesores" onChange={handleChange}>
-                <option value="">Seleccion Asesor</option>
+              <select
+                id="asesores"
+                name="asesores"
+                onChange={handleChange}
+                className="mt-1 p-3 block w-full rounded-md border border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+              >
+                <option value="">Selecciona un asesor</option>
                 {asesores.map((asesor) => (
                   <option key={asesor.idAsesor} value={asesor.usuario.nombre}>
                     {asesor.usuario.nombre}
                   </option>
                 ))}
               </select>
-
               {errors.asesor && (
                 <p className="text-red-600 mt-2 text-sm">
                   {errors.asesor.message}
@@ -100,39 +131,23 @@ function RegistrarAsesoria() {
                 htmlFor="dia"
                 className="block text-lg font-medium text-gray-700"
               >
-                Dia:
+                Día:
               </label>
-{/* 
-              <select id="dia" name="dia" onChange={handleChangeDia}>
-                <option value="">Selecciona el dia</option>
-                <option value="lunes">Lunes</option>
-                <option value="martes">Martes</option>
-                <option value="miercoles">Miercoles</option>
-                <option value="jueves">Jueves</option>
-                <option value="viernes">Viernes</option>
-                <option value="sabado">Sabado</option>
-                <option value="domingo">Domingo</option>
-              </select> */}
-
-              
-              <input type="date" id="dia" name="dia"
-              
-              {...register("dia", {required: "Campo requerido"})}
-              onChange={handleChangeDia}
-               />
-
-              {errors.asesor && (
+              <input
+                type="date"
+                id="dia"
+                name="dia"
+                {...register("dia", { required: "Campo requerido" })}
+                onChange={handleChangeDia}
+                className="mt-1 p-3 block w-full rounded-md border border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+              />
+              {errors.dia && (
                 <p className="text-red-600 mt-2 text-sm">
-                  {errors.asesor.message}
+                  {errors.dia.message}
                 </p>
               )}
             </div>
 
-            {/* <datalist id="fechasDisponibles">
-              {horarios.map(horario => (
-                <option value={horario}></option>
-              ))}
-            </datalist> */}
             <div>
               <label
                 htmlFor="sesion"
@@ -140,19 +155,36 @@ function RegistrarAsesoria() {
               >
                 Fechas Disponibles:
               </label>
+              {intervalo ? (
+                <p className="mt-1 p-3 block w-full rounded-md border border-gray-300 bg-gray-100">
+                  El rango disponible para ese día es de {intervalo}
+                </p>
+              ) : (
+                <p className="mt-1 p-3 block w-full rounded-md border border-gray-300 bg-gray-100">
+                  No hay Horarios
+                </p>
+              )}
+            </div>
 
+            <div>
+              <label
+                htmlFor="hora"
+                className="block text-lg font-medium text-gray-700"
+              >
+                Ingresar Hora:
+              </label>
               <input
-                {...register("fecha", {
+                {...register("hora", {
                   required: "Campo Requerido",
                 })}
-                list="fechasDisponibles"
-                id="fecha"
+                type="time"
+                id="hora"
+                name="hora"
                 className="mt-1 p-3 block w-full rounded-md border border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
               />
-
-              {errors.fecha && (
+              {errors.hora && (
                 <p className="text-red-600 mt-2 text-sm">
-                  {errors.fecha.message}
+                  {errors.hora.message}
                 </p>
               )}
             </div>
@@ -160,7 +192,7 @@ function RegistrarAsesoria() {
               type="submit"
               className="bg-indigo-600 hover:bg-indigo-800 text-white font-bold py-3 px-6 rounded w-full transition duration-300"
             >
-              Registrar Asesoria
+              Registrar Asesoría
             </button>
           </form>
         </div>
