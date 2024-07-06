@@ -51,6 +51,7 @@ function Disponibilidad() {
     };
     setHorarios(nuevo);
 
+    // Call the API to update horarios
     sendHorarios(nuevo);
   };
 
