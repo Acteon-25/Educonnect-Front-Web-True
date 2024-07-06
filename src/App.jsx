@@ -23,8 +23,6 @@ import PerfilAsesor from './pages/PerfilAsesor'
 import LoginUserAsesorPage from './pages/LoginUserAsesorPage'
 import IngresarInformacionPage from "./pages/IngresarInformacionPage"
 import IngresarArchivosBiblioteca from "./pages/IngresarArchivosBiblioteca"
-import ConfiguracionesUsuarioPage from "./pages/ConfiguracionesUsuarioPage"
-import DisponibilidadAsesorPage from "./pages/DisponibilidadAsesorPage"
 import RegistrarAsesoria from './pages/RegistrarAsesoria'
 import Disponibilidad from './pages/Disponibilidad'
 
@@ -56,13 +54,11 @@ function App() {
           <Route path="/admin/asesores/:id" element={<AsesorDetailsPage />} />
           <Route path="/asesor/ingresarCalificacion" element={<IngresarCalificacion />} />
           <Route path="/usuario/perfilUsuario" element={<PerfilUsuario />} />
-          <Route path="/pasarela-pago/:plan/:precio" element={<Pasarela />}/>
+          <Route path="/pasarela-pago/:plan/:precio" element={<Pasarela />} />
           <Route path="/asesor/perfilAsesor" element={<PerfilAsesor />} />
           <Route path="/asesor/ingresarInformacion" element={<IngresarInformacionPage />} />
           <Route path="/ingresarArchivosBiblioteca" element={<IngresarArchivosBiblioteca />} />
           <Route path="/registrarAsesoria" element={<RegistrarAsesoria />} />
-          <Route path="/configuracionesUsuario" element={<ConfiguracionesUsuarioPage />} />
-          <Route path="/disponibilidadAsesor" element={<DisponibilidadAsesorPage />} />
           <Route path="/disponibilidad" element={<Disponibilidad />} />
         </Routes>
       </BrowserRouter>
