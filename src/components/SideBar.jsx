@@ -34,6 +34,9 @@ const SideBar = () => {
           <div className='text-center text-white text-xl hover:bg-orange-400 cursor-pointer py-3 mb-2'>
             <Link to="/usuario/calificaciones">Mis calificaciones</Link>
           </div>
+          <div className='text-center text-white text-xl hover:bg-orange-400 cursor-pointer py-3 mb-2'>
+            <Link to="/usuario/membresia">Mi Membresia</Link>
+          </div>
         </div>
       </div>
     </div>

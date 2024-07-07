@@ -27,6 +27,7 @@ import Disponibilidad from './pages/Disponibilidad'
 import AceptarSesionAsesorPage from "./pages/AceptarSesionAsesor"
 import DetailsAceptarSesion from "./pages/DetailsAceptarSesion"
 import UsuarioCalificacionesPage from "./pages/UsuarioCalificacionesPage"
+import MembresiaDetallesPage from './pages/MembresiaDetallesPage'
 
 
 function App() {
@@ -64,6 +65,7 @@ function App() {
           <Route path="/aceptarSesionAsesor" element={<AceptarSesionAsesorPage />} />
           <Route path="/asesores/sesiones/:id" element={<DetailsAceptarSesion />} />
           <Route path="/usuario/calificaciones/" element={<UsuarioCalificacionesPage />} />
+          <Route path="/usuario/membresia/" element={<MembresiaDetallesPage />} />
         </Routes>
       </BrowserRouter>
     </>
