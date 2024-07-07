@@ -12,7 +12,8 @@ function CalificarEstudiante() {
     const token = localStorage.getItem('token');
     const [idUsuario, idSesion] = data.estudiante.split('-');
 
-    const { materia, calificacion } = data;
+    const { materia, calificacion, comentario } = data;
+    console.log(comentario);
     const enviarCalificacion = {
       usuario: {
         idUsuario: idUsuario,
@@ -32,8 +33,8 @@ function CalificarEstudiante() {
         }
       );
 
-      alert('Calificacion enviada')
-      reset()
+      alert('Calificación enviada');
+      reset();
     } catch (e) {
       console.log(e);
     }
@@ -60,6 +61,7 @@ function CalificarEstudiante() {
           sesion: el.idSesion,
         }));
         setUsuarios(nuevasUsuarios);
+        console.log(users);
       } catch (e) {
         console.log(e);
       }
@@ -139,6 +141,21 @@ function CalificarEstudiante() {
                 className="mt-1 p-3 block w-full rounded-md border border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
               />
               {errors.calificacion && <p className="text-red-600 mt-2 text-sm">{errors.calificacion.message}</p>}
+            </div>
+            <div>
+              <label
+                htmlFor="comentario"
+                className="block text-lg font-medium text-gray-700"
+              >
+                Comentario:
+              </label>
+              <textarea 
+                {...register('comentario', { 
+                  required: 'Campo Requerido',})}
+                id="comentario"
+                className="mt-1 p-3 block w-full rounded-md border border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+              />
+              {errors.comentario && <p className="text-red-600 mt-2 text-sm">{errors.comentario.message}</p>}
             </div>
             <button
               type="submit"
