@@ -1,20 +1,72 @@
-// import { useState } from "react";
-// import axios from "axios";
+import axios from "axios";
 import SideBar from "../components/SideBarAsesor";
-import { useForm } from 'react-hook-form'
-import {useEffect } from 'react'
-// Instalar npm install react-hook-form
+import { useForm } from 'react-hook-form';
+import { useEffect, useState } from 'react';
 
 function CalificarEstudiante() {
+  const [usuarios, setUsuarios] = useState([]);
 
+  const { register, handleSubmit, formState: { errors }, reset } = useForm();
 
-  const { register, handleSubmit, formState: { errors } } = useForm();
+  const onSubmit = async (data) => {
+    const token = localStorage.getItem('token');
+    const [idUsuario, idSesion] = data.estudiante.split('-');
 
-  const onSubmit = (data) => {
-    console.log(data);
-  }
+    const { materia, calificacion } = data;
+    const enviarCalificacion = {
+      usuario: {
+        idUsuario: idUsuario,
+      },
+      nombreMateria: materia,
+      calificacion: calificacion,
+      fecha: new Date().toISOString(),
+    };
 
+    try {
+      await axios.post(
+        `http://localhost:8080/asesores/${idSesion}/calificaciones`, enviarCalificacion,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
 
+      alert('Calificacion enviada')
+      reset()
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  useEffect(() => {
+    const id = localStorage.getItem('id');
+    const token = localStorage.getItem('token');
+
+    const getUsuarios = async () => {
+      try {
+        const response = await axios.get(
+          `http://localhost:8080/asesores/${id}/sesiones`,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+        const users = response.data;
+        const nuevasUsuarios = users.map(el => ({
+          idUsuario: el.usuario.idUsuario,
+          nombre: el.usuario.nombre,
+          sesion: el.idSesion,
+        }));
+        setUsuarios(nuevasUsuarios);
+      } catch (e) {
+        console.log(e);
+      }
+    };
+
+    getUsuarios();
+  }, []);
 
   return (
     <div className="flex">
@@ -32,39 +84,21 @@ function CalificarEstudiante() {
               >
                 Estudiante:
               </label>
-              <input
+              <select
                 {...register('estudiante', { 
                   required: 'Campo Requerido',
                   maxLength: {
                     value: 20,
-                    message: 'Maximo caracteres 20'
+                    message: 'Máximo caracteres 20'
                   }})}
-                type="text"
-                id="estudiante"
-                className="mt-1 p-3 block w-full rounded-md border border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-              />
-               {errors.estudiante && <p className="text-red-600 mt-2 text-sm">{errors.estudiante.message}</p>}
-            </div>
-            <div>
-              <label
-                htmlFor="sesion"
-                className="block text-lg font-medium text-gray-700"
+                className="mt-1 block w-full p-3 rounded-md border border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
               >
-                Sesión:
-              </label>
-              
-              <input
-                {...register('sesion', { 
-                  required: 'Campo Requerido',
-                  maxLength: {
-                    value: 20,
-                    message: 'Maximo caracteres 20'
-                  }})}
-                type="text"
-                id="sesion"
-                className="mt-1 p-3 block w-full rounded-md border border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-              />
-               {errors.sesion && <p className="text-red-600 mt-2 text-sm">{errors.sesion.message}</p>}
+                <option value="">-- Selecciona Estudiante --</option>
+                {usuarios.map(u => (
+                  <option value={`${u.idUsuario}-${u.sesion}`} key={u.sesion}>{u.nombre}</option>
+                ))}
+              </select>
+              {errors.estudiante && <p className="text-red-600 mt-2 text-sm">{errors.estudiante.message}</p>}
             </div>
             <div>
               <label
@@ -78,37 +112,34 @@ function CalificarEstudiante() {
                   required: 'Campo Requerido',
                   maxLength: {
                     value: 20,
-                    message: 'Maximo caracteres 20'
+                    message: 'Máximo caracteres 20'
                   }})}
                 type="text"
                 id="materia"
                 className="mt-1 p-3 block w-full rounded-md border border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
               />
-               {errors.materia && <p className="text-red-600 mt-2 text-sm">{errors.materia.message}</p>}
+              {errors.materia && <p className="text-red-600 mt-2 text-sm">{errors.materia.message}</p>}
             </div>
-            
             <div>
               <label
-                htmlFor="nota"
+                htmlFor="calificacion"
                 className="block text-lg font-medium text-gray-700"
               >
-                Calificacion:
+                Calificación:
               </label>
               <input
                 {...register('calificacion', { 
                   required: 'Campo Requerido',
                   max: {
                     value: 20,
-                    message: 'Maximo de nota 20'
+                    message: 'Máximo de nota 20'
                   }})}
                 type="number"
-                id="nota"
+                id="calificacion"
                 className="mt-1 p-3 block w-full rounded-md border border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
               />
-               {errors.calificacion && <p className="text-red-600 mt-2 text-sm">{errors.calificacion.message}</p>}
+              {errors.calificacion && <p className="text-red-600 mt-2 text-sm">{errors.calificacion.message}</p>}
             </div>
-
-
             <button
               type="submit"
               className="bg-indigo-600 hover:bg-indigo-800 text-white font-bold py-3 px-6 rounded w-full transition duration-300"
