@@ -13,7 +13,6 @@ function CalificarEstudiante() {
     const [idUsuario, idSesion] = data.estudiante.split('-');
 
     const { materia, calificacion, comentario } = data;
-    console.log(comentario);
     const enviarCalificacion = {
       usuario: {
         idUsuario: idUsuario,
@@ -21,6 +20,7 @@ function CalificarEstudiante() {
       nombreMateria: materia,
       calificacion: calificacion,
       fecha: new Date().toISOString(),
+      comentario: comentario,
     };
 
     try {
@@ -55,10 +55,12 @@ function CalificarEstudiante() {
           }
         );
         const users = response.data;
+        console.log(response.data);
         const nuevasUsuarios = users.map(el => ({
           idUsuario: el.usuario.idUsuario,
           nombre: el.usuario.nombre,
           sesion: el.idSesion,
+          fechaHora: new Date(el.fechaHora).toLocaleDateString('es-ES', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric' }),
         }));
         setUsuarios(nuevasUsuarios);
         console.log(users);
@@ -97,7 +99,7 @@ function CalificarEstudiante() {
               >
                 <option value="">-- Selecciona Estudiante --</option>
                 {usuarios.map(u => (
-                  <option value={`${u.idUsuario}-${u.sesion}`} key={u.sesion}>{u.nombre}</option>
+                  <option value={`${u.idUsuario}-${u.sesion}`} key={u.sesion}>{u.nombre} - {u.fechaHora}</option>
                 ))}
               </select>
               {errors.estudiante && <p className="text-red-600 mt-2 text-sm">{errors.estudiante.message}</p>}

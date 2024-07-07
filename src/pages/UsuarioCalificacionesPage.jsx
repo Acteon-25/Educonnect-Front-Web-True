@@ -25,7 +25,7 @@ function UsuarioCalificacionesPage() {
           fechaSesion: new Date(el.sesion.fechaHora).toLocaleDateString('es-ES', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric' }),
           tema: el.nombreMateria,
           calificacion: el.calificacion,
-          comentario: 'Mismo Comentario siempre',
+          comentario: el.comentario,
         }));
         setCalificaciones(nuevasCalis);
         console.log(nuevasCalis);
