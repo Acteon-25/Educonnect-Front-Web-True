@@ -13,7 +13,6 @@ import RestablecerPage from './pages/RestablecerPage'
 import RegisterAsesorPage from './pages/RegisterAsesorPage'
 import AdministracionUsuariosPage from "./pages/AdministracionUsuariosPage"
 import AdministrarAsesoresPage from "./pages/AdministrarAsesoresPage"
-import MeetingPage from "./pages/MeetingPage"
 import ConfirmarContraPage from "./pages/ConfirmarContraPage"
 import AsesorDetailsPage from './pages/AsesorDetailsPage'
 import IngresarCalificacion from './pages/IngresarCalificacion'
@@ -25,6 +24,8 @@ import IngresarInformacionPage from "./pages/IngresarInformacionPage"
 import IngresarArchivosBiblioteca from "./pages/IngresarArchivosBiblioteca"
 import RegistrarAsesoria from './pages/RegistrarAsesoria'
 import Disponibilidad from './pages/Disponibilidad'
+import AceptarSesionAsesorPage from "./pages/AceptarSesionAsesor"
+import DetailsAceptarSesion from "./pages/DetailsAceptarSesion"
 
 
 function App() {
@@ -48,7 +49,6 @@ function App() {
           <Route path="/administracionUsuarios" element={<AdministracionUsuariosPage />} />
           <Route path="/editProfile" element={<EditProfilePage />} />
           <Route path="/dashboard" element={<DashboardPage />} />
-          <Route path="/meeting" element={<MeetingPage />} />
           <Route path="/confirmarContra" element={<ConfirmarContraPage />} />
           <Route path="*" element={<ErrorPage />} />
           <Route path="/admin/asesores/:id" element={<AsesorDetailsPage />} />
@@ -60,6 +60,8 @@ function App() {
           <Route path="/ingresarArchivosBiblioteca" element={<IngresarArchivosBiblioteca />} />
           <Route path="/registrarAsesoria" element={<RegistrarAsesoria />} />
           <Route path="/disponibilidad" element={<Disponibilidad />} />
+          <Route path="/aceptarSesionAsesor" element={<AceptarSesionAsesorPage />} />
+          <Route path="/asesores/sesiones/:id" element={<DetailsAceptarSesion />} />
         </Routes>
       </BrowserRouter>
     </>

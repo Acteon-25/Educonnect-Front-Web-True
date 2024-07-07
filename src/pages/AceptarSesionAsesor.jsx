@@ -1,11 +1,8 @@
-import { useParams } from 'react-router-dom'
 import Notification from '../icons/Notification.svg'
 import Foto from '../img/Foto.png'
-
+import SesionList from '../components/SesionList'
 
 const AceptarSesionAsesorPage = () => {
-
-  const { id } = useParams()
 
   return (
     <div className="">
@@ -19,7 +16,7 @@ const AceptarSesionAsesorPage = () => {
 
           <img src={Notification} alt="" />
           <img src={Foto} alt="" className='size-12 rounded-full' />
-          <h2>Bienvenido Jean{id}</h2>
+          <h2>Bienvenido Jean</h2>
           <p>Admin</p>
         </div>
       </div>
@@ -28,7 +25,7 @@ const AceptarSesionAsesorPage = () => {
       <div className='grid grid-cols-1 place-items-center w-screen'>
         <h3 className='text-3xl'>Administracion de solicitudes de Asesores</h3>
         <br />
-
+        <SesionList />
         
       </div>
     </div>

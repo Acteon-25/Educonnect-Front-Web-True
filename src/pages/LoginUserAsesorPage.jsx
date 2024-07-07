@@ -1,17 +1,18 @@
 import { useEffect, useState } from 'react'
-import Meeting from '../components/Meeting'
 import SideBar from '../components/SideBarAsesor'
 import Buscador from '../icons/Buscador.svg'
 import Notification from '../icons/Notification.svg'
 import Foto from '../img/Foto.png'
 import axios from "axios"
-
+import { Link, useNavigate } from 'react-router-dom'
 
 const token = localStorage.getItem("token")
+const id = localStorage.getItem('id')
 
 const LoginUserAsesorPage = () => {
-
+  const navigate = useNavigate()
   const [nombre, setNombre] = useState('')
+  const [asesores, setAsesores] = useState([]);
 
   const getNombre = () => {
     axios.get("http://localhost:8080/asesores/perfil", {
@@ -21,12 +22,30 @@ const LoginUserAsesorPage = () => {
     })
       .then((res) => {
         setNombre(res.data.usuario.nombre)
+        console.log(res.data.usuario.nombre)
+        const nombreActual = res.data.usuario.nombre
+        localStorage.setItem('nombreActual', nombreActual);
         console.log(res.data)
+      })
+  }
+
+  const getSesionesSolicitadas = () => {
+    axios.get(`http://localhost:8080/asesores/${id}/sesiones`, {
+      headers: {
+        'Authorization': `Bearer ${token}`
+      }
+    })
+      .then((response) => {
+        console.log(response.data)
+        const filtro = response.data.filter(sesion => sesion.estado === "PROGRAMADA")
+        console.log(filtro)
+        setAsesores(filtro);
       })
   }
 
   useEffect(() => {
     getNombre();
+    getSesionesSolicitadas();
   }, []);
 
   const clearLocalStorage = () => {
@@ -49,7 +68,7 @@ const LoginUserAsesorPage = () => {
           <img src={Notification} alt="" />
           <img src={Foto} alt="" className='size-12 rounded-full' />
           <h2>Bienvenido {nombre}</h2>
-          <p>Alumno</p>
+          <p>Asesor</p>
         </div>
       </div>
 
@@ -57,11 +76,23 @@ const LoginUserAsesorPage = () => {
         <div>
           Asesorias
         </div>
-        <div className='w-full'>
-          <Meeting nameUser={nombre} />
+        <div >
+          Tareas
         </div>
         <div>
-          Tareas
+          {asesores.map((asesor) => (
+            <div>
+              <div>
+                {asesor.usuario.nombre}
+              </div>
+              <p className="text-sm dark:text-gray-500">
+                {`${asesor.fechaHora.split('T')[0]} ${asesor.fechaHora.split('T')[1]}`}
+              </p>
+              <Link to={asesor.urlJitsi} className="text-blue-500 hover:text-blue-700">
+                Enlace a la sesion  
+              </Link>
+            </div>
+          ))}
         </div>
       </div>
     </div>

@@ -77,13 +77,13 @@ function RegistrarAsesoria() {
   const handleChangeDia = (event) => {
     const selectedFecha = event.target.value;
     const diasSemana = [
-      "domingo",
       "lunes",
       "martes",
       "miércoles",
       "jueves",
       "viernes",
       "sábado",
+      "domingo",
     ];
     const selectedDia = diasSemana[new Date(selectedFecha).getDay()];
 
