@@ -2,13 +2,11 @@
 // import axios from "axios";
 import SideBar from "../components/SideBarAsesor";
 import { useForm } from 'react-hook-form'
+import {useEffect } from 'react'
 // Instalar npm install react-hook-form
 
 function CalificarEstudiante() {
-  // const [nota, setNota] = useState("");
-  // const [comentario, setComentario] = useState("");
-  // const [mensaje, setMensaje] = useState(null);
-  // const [error, setError] = useState(null);
+
 
   const { register, handleSubmit, formState: { errors } } = useForm();
 
