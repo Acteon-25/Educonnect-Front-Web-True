@@ -43,6 +43,23 @@ const LoginUserAsesorPage = () => {
       })
   }
 
+  const handleDelete = async (idSesion) => {
+    try {
+      await axios.delete(
+        `http://localhost:8080/sesiones/${idSesion}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      console.log("Asesor eliminado:", id);
+    } catch (error) {
+      console.error("Error al eliminar asesor:", error);
+    }
+  };
+
   useEffect(() => {
     getNombre();
     getSesionesSolicitadas();
@@ -80,6 +97,7 @@ const LoginUserAsesorPage = () => {
           Tareas
         </div>
         <div>
+          Sesiones
           {asesores.map((asesor) => (
             <div>
               <div>
@@ -89,8 +107,12 @@ const LoginUserAsesorPage = () => {
                 {`${asesor.fechaHora.split('T')[0]} ${asesor.fechaHora.split('T')[1]}`}
               </p>
               <Link to={asesor.urlJitsi} className="text-blue-500 hover:text-blue-700">
-                Enlace a la sesion  
+                Enlace a la sesion
               </Link>
+              <a href={`/login/asesor/${id}`}>
+                <button onClick={() => handleDelete(asesor.idSesion)}>Eliminar</button>
+              </a>
+
             </div>
           ))}
         </div>
