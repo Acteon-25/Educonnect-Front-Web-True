@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react'
-import Meeting from '../components/Meeting'
 import SideBar from '../components/SideBar'
 import Buscador from '../icons/Buscador.svg'
 import Notification from '../icons/Notification.svg'
@@ -42,7 +41,7 @@ const LoginUserPage = () => {
       <div className='flex px-10 pb-10 pt-20 gap-4 w-screen justify-between'>
         <div className='flex float-right  gap-1'>
 
-        <button onClick={clearLocalStorage}>Clear Local Storage</button>
+        <button onClick={clearLocalStorage}>Cerrar Sesion</button>
         
         <img src={Buscador} alt="" />
           <input type="text" placeholder='Buscar' />
@@ -61,7 +60,6 @@ const LoginUserPage = () => {
           Asesorias
         </div>
         <div className='w-full'>
-          <Meeting nameUser={nombre} />
         </div>
         <div>
           Tareas
