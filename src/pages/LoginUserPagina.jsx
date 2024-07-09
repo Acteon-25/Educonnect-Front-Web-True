@@ -5,6 +5,7 @@ import Notification from '../icons/Notification.svg'
 import Foto from '../img/Foto.png'
 import axios from "axios"
 import { useNavigate } from 'react-router-dom'
+import Notifications from '../components/Notifications'
 
 
 const token = localStorage.getItem("token")
@@ -28,6 +29,7 @@ const LoginUserPage = () => {
   useEffect(() => {
     getNombre();
   }, []);
+ 
 
   const clearLocalStorage = () => {
     localStorage.clear();
@@ -48,7 +50,7 @@ const LoginUserPage = () => {
         </div>
         <div className='flex float-left gap-4'>
           <button className=' bg-green-500 rounded-xl py-1 px-3'> + Nueva Asesoria</button>
-          <img src={Notification} alt="" />
+          <Notifications/>
           <img src={Foto} alt="" className='size-12 rounded-full' />
           <h2>Bienvenido {nombre}</h2>
           <p>Alumno</p>
