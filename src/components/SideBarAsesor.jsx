@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 
+const id = localStorage.getItem('idAsesor')
+
 const SideBar = () => {
   const [open, setOpen] = useState(false)
   return (
@@ -21,7 +23,7 @@ const SideBar = () => {
             </svg>
           </button>
           <div className='text-center text-white text-xl hover:bg-orange-400 cursor-pointer py-3 mb-2'>
-            <Link to="/login/asesor/:id">Inicio</Link>
+            <Link to={`/login/asesor/${id}`}>Inicio</Link>	
           </div>
           <div className='text-center text-white text-xl hover:bg-orange-400 cursor-pointer py-3 mb-2'>
             <Link to="/aceptarSesionAsesor">Aceptar Sesion</Link>

@@ -81,7 +81,6 @@ const LoginUserAsesorPage = () => {
           <input type="text" placeholder='Buscar' />
         </div>
         <div className='flex float-left gap-4'>
-          <button className=' bg-green-500 rounded-xl py-1 px-3'> + Nueva Asesoria</button>
           <img src={Notification} alt="" />
           <img src={Foto} alt="" className='size-12 rounded-full' />
           <h2>Bienvenido {nombre}</h2>

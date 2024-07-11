@@ -1,12 +1,13 @@
 import Notification from '../icons/Notification.svg'
 import Foto from '../img/Foto.png'
 import SesionList from '../components/SesionList'
+import SideBar from "../components/SideBarAsesor";
 
 const AceptarSesionAsesorPage = () => {
 
   return (
     <div className="">
-
+      <SideBar />
       <div className='flex px-10 pb-10 pt-20 gap-4 w-screen justify-between'>
         <div className='flex float-right'>
           <img src={""} alt="" />
@@ -26,7 +27,7 @@ const AceptarSesionAsesorPage = () => {
         <h3 className='text-3xl'>Administracion de solicitudes de Asesores</h3>
         <br />
         <SesionList />
-        
+
       </div>
     </div>
   )

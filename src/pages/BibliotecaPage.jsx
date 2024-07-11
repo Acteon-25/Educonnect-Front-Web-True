@@ -27,7 +27,7 @@ const BibliotecaPage = () => {
       <Header />
       <SectionContainer className="py-8 px-5 lg:w-auto place-items-center my-0">
         <h2 className='text-4xl'>Libros de la Biblioteca</h2>
-        <p className='text-xl'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita quod sequi, magnam ipsam debitis excepturi?</p>
+        <p className='text-xl'>Revise nuestro contenido educativo para obtener la mejor experiencia de aprendizaje</p>
       </SectionContainer>
 
       <SectionContainer className="py-8 px-5 lg:w-auto place-items-center my-4">

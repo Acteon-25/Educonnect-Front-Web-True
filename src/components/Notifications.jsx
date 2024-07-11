@@ -1,4 +1,4 @@
-import {useState, useEffect} from 'react';
+import { useState, useEffect } from 'react';
 import notificationService from '../services/notificationService';
 
 function Notifications() {
@@ -37,8 +37,8 @@ function Notifications() {
 
   const handleMarkAsRead = async (notificationId) => {
     try {
-      await notificationService.markAsRead(user,notificationId, token);
-      setNotifications(prevNotifications => prevNotifications.filter((_, i) => i !== notificationId)); 
+      await notificationService.markAsRead(user, notificationId, token);
+      setNotifications(prevNotifications => prevNotifications.filter((_, i) => i !== notificationId));
     } catch (error) {
       console.error('Error al marcar la notificación como leída:', error);
     }
@@ -48,7 +48,7 @@ function Notifications() {
 
   const handleMarkAllAsRead = async () => {
     try {
-      await notificationService.markAllAsRead(user,token);
+      await notificationService.markAllAsRead(user, token);
     } catch (error) {
       console.error('Error al marcar la notificación como leída:', error);
     }
@@ -98,8 +98,8 @@ function Notifications() {
           </ul>
         </div>
       )}
- </div>
-);
+    </div>
+  );
 }
 
 export default Notifications

@@ -33,6 +33,7 @@ const LoginPage = () => {
         })
         const ruta = resEstudiante.data.idUsuario
         localStorage.setItem('id', ruta);
+        localStorage.setItem('idEstudiante', ruta);
         navigate(`/login/${ruta}`)
 
       } else if (tipoUsuario == "ASESOR") {
@@ -46,11 +47,12 @@ const LoginPage = () => {
         console.log(resAsesor.data.idAsesor)
         const ruta2 = resAsesor.data.idAsesor
         localStorage.setItem('id', ruta2)
+        localStorage.setItem('idAsesor', ruta);
         console.log(ruta2);
         navigate(`/login/asesor/${ruta}`)
 
       } else if (tipoUsuario == "ADMIN") {
-
+        localStorage.setItem('idAdmin', ruta);
         navigate("/")
       }
     } catch (e) {

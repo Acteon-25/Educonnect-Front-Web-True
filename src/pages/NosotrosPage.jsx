@@ -62,7 +62,7 @@ const NostrosPage = () => {
                   <p className="mt-2 text-sm text-gray-500">
                     En EduConnect, nos regimos por los siguientes valores:
                     Excelencia académica Compromiso Responsabilidad Respeto
-                    Integridad Colaboración, Lorem, ipsum dolor sit amet consectetur 
+                    Integridad Colaboración
                   </p>
                 </div>
               </div>

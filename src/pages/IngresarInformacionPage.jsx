@@ -49,14 +49,14 @@ function IngresarInformacionPage() {
         }
       );
 
-      console.log("Calificación enviada:", response.data);
-      setMensaje("Calificación enviada con éxito");
+      console.log("Informe enviado:", response.data);
+      setMensaje("Informe enviado con éxito");
       setEstudiante('');
       setInforme("");
     } catch (error) {
-      console.error("Error al enviar calificación:", error);
+      console.error("Error al enviar el Informe:", error);
       setError(
-        "Error al enviar la calificación. Por favor, inténtalo de nuevo."
+        "Error al enviar el Informe. Por favor, inténtalo de nuevo."
       );
     }
   };

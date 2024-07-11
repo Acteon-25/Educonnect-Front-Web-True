@@ -32,8 +32,9 @@ const PricingPage = () => {
                 "Foro",
                 "Acceso limitado a material de la biblioteca",
                 "Comentarios y evaluaciones sobre asesorías",
+                "Elección de Asesores",
               ]}
-              value="ESTUDIANTE_PRO"
+              value="ESTUDIANTE_ESTANDAR"
 
             />
 
@@ -45,7 +46,7 @@ const PricingPage = () => {
                 "Acceso ilimitado a la biblioteca virtual",
                 "Soporte 24hs",
                 "Acceso a reportes de notas y comentarios del alumno",
-                "El número del sr. vásquez",
+                "Elección de Asesores",
               ]}
               highlighted 
               value="ESTUDIANTE_PRO"
@@ -55,16 +56,12 @@ const PricingPage = () => {
 
             {/* Tarjeta Plan Super ArchiMegaPremium */}
             <PricingCard
-              plan="Super ArchiMegaPremium"
+              plan="Grupal Premium"
               precio="119.99"
               caracteristicas={[
-                "Asesorías múltiples en 1 día",
+                "Asesorías grupales",
                 "Capacitación Soporte 24hs",
-                "Elección de Asesores",
-                "El número del CEO Jhonatan Fernandez para llamarlo directamente",
-                "Acceso al código fuente",
-                "Acceso a la casa del sr. vásquez",
-                "Acceso a party de 5 de divine a +",
+                "Acceso ilimitado a la biblioteca virtual",
               ]}
               value="ESTUDIANTE_PRO"
 
