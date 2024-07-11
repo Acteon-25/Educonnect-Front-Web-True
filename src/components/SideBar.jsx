@@ -24,10 +24,11 @@ const SideBar = () => {
             <Link to="/login/:id">Inicio</Link>
           </div>
           <div className='text-center text-white text-xl hover:bg-orange-400 cursor-pointer py-3 mb-2'>
-          Configuraciones
+            <Link to="/enviarMensaje">Mensajes</Link>
           </div>
-          <div className='text-center text-white text-xl hover:bg-orange-400 cursor-pointer py-3 mb-2'>Mensajes</div>
-          <div className='text-center text-white text-xl hover:bg-orange-400 cursor-pointer py-3 mb-2'>Ayuda y soporte</div>
+          <div className='text-center text-white text-xl hover:bg-orange-400 cursor-pointer py-3 mb-2'>
+            <Link to="/registrarAsesoria">Registrar Asesoria</Link>
+          </div>
           <div className='text-center text-white text-xl hover:bg-orange-400 cursor-pointer py-3 mb-2'>
             <Link to="/usuario/perfilUsuario">Editar Perfil</Link>
           </div>

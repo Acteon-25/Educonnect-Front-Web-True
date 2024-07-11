@@ -53,8 +53,6 @@ function PerfilAsesor() {
       ...formData,
       [event.target.name]: event.target.value
     });
-
-
   };
 
 
@@ -86,7 +84,7 @@ function PerfilAsesor() {
   }
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100">
+    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 py-4">
       <button className='bg-indigo-500 hover:bg-indigo-700 text-white py-2 px-4 rounded' onClick={() => navigate(-1)}>Volver</button>
       <div className="container mx-auto p-6 max-w-lg">
         <h1 className="text-3xl font-bold mb-6 text-center">Mi Perfil</h1>

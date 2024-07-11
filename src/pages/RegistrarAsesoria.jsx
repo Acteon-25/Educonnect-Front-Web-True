@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import SideBar from "../components/SideBarAsesor";
+import SideBar from "../components/SideBar";
 import { useForm } from "react-hook-form";
 
 function RegistrarAsesoria() {

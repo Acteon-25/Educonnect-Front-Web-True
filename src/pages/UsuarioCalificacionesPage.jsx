@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import SideBar from "../components/SideBarAsesor";
+import SideBar from "../components/SideBar";
 
 function UsuarioCalificacionesPage() {
   const [calificaciones, setCalificaciones] = useState([]);

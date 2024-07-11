@@ -1,17 +1,18 @@
 import { useEffect, useState } from 'react'
 import SideBar from '../components/SideBar'
 import Buscador from '../icons/Buscador.svg'
-import Notification from '../icons/Notification.svg'
 import Foto from '../img/Foto.png'
 import axios from "axios"
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 import Notifications from '../components/Notifications'
 
 
 const token = localStorage.getItem("token")
+const id = localStorage.getItem('id')
 
 const LoginUserPage = () => {
   const navigate = useNavigate()
+  const [asesores, setAsesores] = useState([]);
 
   const [nombre, setNombre] = useState('')
 
@@ -26,8 +27,40 @@ const LoginUserPage = () => {
       })
   }
 
+  const getSesionesSolicitadas = () => {
+    axios.get(`http://localhost:8080/estudiantes/${id}/sesiones`, {
+      headers: {
+        'Authorization': `Bearer ${token}`
+      }
+    })
+      .then((response) => {
+        console.log(response.data)
+        const filtro = response.data.filter(sesion => sesion.estado === "PROGRAMADA")
+        console.log(filtro)
+        setAsesores(filtro);
+      })
+  }
+
+  const handleDelete = async (idSesion) => {
+    try {
+      await axios.delete(
+        `http://localhost:8080/sesiones/${idSesion}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      console.log("Asesor eliminado:", id);
+    } catch (error) {
+      console.error("Error al eliminar asesor:", error);
+    }
+  };
+
   useEffect(() => {
     getNombre();
+    getSesionesSolicitadas();
   }, []);
  
 
@@ -61,10 +94,29 @@ const LoginUserPage = () => {
         <div>
           Asesorias
         </div>
-        <div className='w-full'>
+        <div >
+        Tareas
         </div>
         <div>
-          Tareas
+        Sesiones
+          {asesores.map((asesor) => (
+            <div>
+              <div>
+               
+                {asesor.asesor.usuario.nombre}
+              </div>
+              <p className="text-sm dark:text-gray-500">
+                {`${asesor.fechaHora.split('T')[0]} ${asesor.fechaHora.split('T')[1]}`}
+              </p>
+              <Link to={asesor.urlJitsi} className="text-blue-500 hover:text-blue-700">
+                Enlace a la sesion
+              </Link>
+              <a href={`/login/asesor/${id}`}>
+                <button onClick={() => handleDelete(asesor.idSesion)}>Eliminar</button>
+              </a>
+
+            </div>
+          ))}
         </div>
       </div>
     </div>

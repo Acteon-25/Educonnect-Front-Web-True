@@ -23,7 +23,9 @@ const SideBar = () => {
           <div className='text-center text-white text-xl hover:bg-orange-400 cursor-pointer py-3 mb-2'>
             <Link to="/login/asesor/:id">Inicio</Link>
           </div>
-          <div className='text-center text-white text-xl hover:bg-orange-400 cursor-pointer py-3 mb-2'>Agenda</div>
+          <div className='text-center text-white text-xl hover:bg-orange-400 cursor-pointer py-3 mb-2'>
+            <Link to="/aceptarSesionAsesor">Aceptar Sesion</Link>
+          </div>
           <div className='text-center text-white text-xl hover:bg-orange-400 cursor-pointer py-3 mb-2'>
             <Link to="/asesor/ingresarInformacion">Ingresar Informe</Link>
           </div>

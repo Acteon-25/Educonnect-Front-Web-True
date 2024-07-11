@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useNavigate, Link } from 'react-router-dom';
-const tokenCancelar = localStorage.getItem("token")
+import { useNavigate } from 'react-router-dom';
 function PerfilUsuario() {
   const navigate = useNavigate();
   const [usuario, setUsuario] = useState(null);
@@ -14,15 +13,7 @@ function PerfilUsuario() {
     estado: '',
   });
 
-  const handleClickDelete = () => {
-    axios.delete("http://localhost:8080/membresias/cancelar", {
-      headers: {
-        'Authorization': `Bearer ${tokenCancelar}`
-      }
-    })
-    console.log(tokenCancelar)
-    alert("Membresia cancelada con exito")
-  }
+
 
   useEffect(() => {
     const obtenerDatosUsuario = async () => {
@@ -146,23 +137,6 @@ function PerfilUsuario() {
             Guardar cambios
           </button>
         </form>
-      </div>
-
-      <div className="flex flex-col items-center justify-center bg-gray-100">
-        <div className="container mx-auto p-6 max-w-lg">
-          <h1 className="text-3xl font-bold mb-6 text-center">Eliminar Membresia</h1>
-          <p className="text-gray-600 text-center mb-6">
-            ¿Estás seguro de que deseas eliminar tu membresia?
-          </p>
-          <Link to="/">
-            <button
-              onClick={handleClickDelete}
-              className="w-full bg-indigo-600 text-white p-3 rounded-md shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-            >
-              Cancelar Membresia
-            </button>
-          </Link>
-        </div>
       </div>
     </div>
   );
