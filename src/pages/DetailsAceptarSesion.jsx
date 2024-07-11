@@ -13,6 +13,8 @@ function DetailsAceptarSesion() {
     const fetchAsesor = async () => {
       try {
         const token = localStorage.getItem("token");
+        console.log(token)
+        console.log(id)
         const response = await axios.get(
           `http://localhost:8080/sesiones/${id}`,
           {

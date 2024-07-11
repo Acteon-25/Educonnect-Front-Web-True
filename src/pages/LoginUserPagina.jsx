@@ -43,16 +43,16 @@ const LoginUserPage = () => {
 
   const handleDelete = async (idSesion) => {
     try {
+
       await axios.delete(
-        `http://localhost:8080/sesiones/${idSesion}`,
+        `http://localhost:8080/estudiantes/${idSesion}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
           },
         }
       );
-
-      console.log("Asesor eliminado:", id);
+      console.log("Asesor eliminado:", idSesion);
     } catch (error) {
       console.error("Error al eliminar asesor:", error);
     }
@@ -97,8 +97,6 @@ const LoginUserPage = () => {
           Asesorias
         </div>
 
-
-
         <div className='flex flex-col gap-4'>
           Tareas
         </div>
@@ -122,9 +120,11 @@ const LoginUserPage = () => {
                     <Link to={asesor.urlJitsi} className='text-blue-500 hover:text-blue-700'>
                       Enlace a la sesion
                     </Link>
-                    <button className=" justify-self-end border border-gray-300 rounded-lg py-1 px-3 bg-white hover:bg-gray-50">
+                    <a href={`/login/${id}`}>
+                    <button onClick={() => handleDelete(asesor.idSesion)} className=" justify-self-end border border-gray-300 rounded-lg py-1 px-3 bg-white hover:bg-gray-50">
                       Eliminar
                     </button>
+                    </a>
                   </div>
                 </div>
               </div>
