@@ -22,6 +22,7 @@ const LoginPage = () => {
       const response = await axios.post('http://localhost:8080/login', details);
       const token = response.data.token;
       const tipoUsuario = response.data.tipoUsuario;
+      console.log(tipoUsuario);
       console.log(token);
       localStorage.setItem('token', token);
 
@@ -52,7 +53,6 @@ const LoginPage = () => {
         navigate(`/login/asesor/${ruta}`)
 
       } else if (tipoUsuario == "ADMIN") {
-        localStorage.setItem('idAdmin', ruta);
         navigate("/")
       }
     } catch (e) {

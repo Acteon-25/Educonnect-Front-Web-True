@@ -1,5 +1,4 @@
 import { useParams } from 'react-router-dom'
-import SideBar from '../components/SideBar'
 import Notification from '../icons/Notification.svg'
 import Foto from '../img/Foto.png'
 import AsesorList from '../components/AsesorList'
@@ -11,7 +10,6 @@ const AdministrarAsesoresPage = () => {
 
   return (
     <div className="">
-      <SideBar />
 
       <div className='flex px-10 pb-10 pt-20 gap-4 w-screen justify-between'>
         <div className='flex float-right'>

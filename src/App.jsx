@@ -29,6 +29,7 @@ import DetailsAceptarSesion from "./pages/DetailsAceptarSesion"
 import UsuarioCalificacionesPage from "./pages/UsuarioCalificacionesPage"
 import MembresiaDetallesPage from './pages/MembresiaDetallesPage'
 import EnviarMensaje from './pages/EnviarMensaje'
+import EnviarMensajeAsesor from './pages/EnviarMensajeAsesor'
 
 function App() {
 
@@ -67,6 +68,7 @@ function App() {
           <Route path="/usuario/calificaciones/" element={<UsuarioCalificacionesPage />} />
           <Route path="/usuario/membresia/" element={<MembresiaDetallesPage />} />
           <Route path="/enviarMensaje" element={<EnviarMensaje />} />
+          <Route path="/enviarMensajeAsesor" element={<EnviarMensajeAsesor />} />
         </Routes>
       </BrowserRouter>
     </>
