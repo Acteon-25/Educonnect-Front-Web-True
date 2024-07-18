@@ -23,7 +23,7 @@ const SideBar = () => {
             </svg>
           </button>
           <div className='text-center text-white text-xl hover:bg-orange-400 cursor-pointer py-3 mb-2'>
-            <Link to={`/login/${id}`}>Inicio</Link>	
+            <a href={`/login/${id}`}>Inicio</a>	
           </div>
           <div className='text-center text-white text-xl hover:bg-orange-400 cursor-pointer py-3 mb-2'>
             <Link to="/enviarMensaje">Mensajes</Link>
@@ -39,6 +39,9 @@ const SideBar = () => {
           </div>
           <div className='text-center text-white text-xl hover:bg-orange-400 cursor-pointer py-3 mb-2'>
             <Link to="/usuario/membresia">Mi Membresia</Link>
+          </div>
+          <div className='text-center text-white text-xl hover:bg-orange-400 cursor-pointer py-3 mb-2'>
+            <Link to="/biblioteca">Biblioteca</Link>
           </div>
         </div>
       </div>

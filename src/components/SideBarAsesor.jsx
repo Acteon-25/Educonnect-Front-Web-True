@@ -23,7 +23,7 @@ const SideBar = () => {
             </svg>
           </button>
           <div className='text-center text-white text-xl hover:bg-orange-400 cursor-pointer py-3 mb-2'>
-            <Link to={`/login/asesor/${id}`}>Inicio</Link>	
+            <a href={`/login/asesor/${id}`}>Inicio</a>	
           </div>
           <div className='text-center text-white text-xl hover:bg-orange-400 cursor-pointer py-3 mb-2'>
             <Link to="/aceptarSesionAsesor">Aceptar Sesion</Link>

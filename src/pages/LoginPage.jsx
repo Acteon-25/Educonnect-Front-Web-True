@@ -1,4 +1,4 @@
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { useState } from 'react'
 import Alumno from '../img/AlumnoOscuro.jpeg';
 import Header from "../components/Header";
@@ -22,6 +22,7 @@ const LoginPage = () => {
       const response = await axios.post('http://localhost:8080/login', details);
       const token = response.data.token;
       const tipoUsuario = response.data.tipoUsuario;
+      console.log(tipoUsuario);
       console.log(token);
       localStorage.setItem('token', token);
 
@@ -72,13 +73,11 @@ const LoginPage = () => {
         <form onSubmit={handleSubmit}>
           <h2>Bienvenido</h2>
           <div className="border rounded-full py-3 px-4 grid grid-cols-1">
-            <button className="bg-sky-500 rounded-full text-white py-2" onClick={() => {
-              navigate("/login");
-            }}>
+            <NavLink className="bg-sky-500 rounded-full text-white py-2 text-center" to={"/login"}>
               Login
-            </button>
+            </NavLink>
           </div>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam, iusto.</p>
+          <p>Es necesario iniciar sesion en Educonnect para acceder al contenido</p>
           <h3>Correo</h3>
           <input type="text" placeholder="Ingrese su Correo" className="border border-sky-500 rounded-full px-4 py-1"
             value={email}

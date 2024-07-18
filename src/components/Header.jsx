@@ -55,16 +55,6 @@ const Header = () => {
               ? "bg-green-500/70 py-1 px-5 mx-auto rounded-xl text-white"
               : "text-white hover:bg-green-600 py-1 px-5 mx-auto rounded-xl"
           }
-          to="/biblioteca"
-        >
-          Biblioteca
-        </NavLink>
-        <NavLink
-          className={({ isActive }) =>
-            isActive
-              ? "bg-green-500/70 py-1 px-5 mx-auto rounded-xl text-white"
-              : "text-white hover:bg-green-600 py-1 px-5 mx-auto rounded-xl"
-          }
           to="/pricing"
         >
           Precios
