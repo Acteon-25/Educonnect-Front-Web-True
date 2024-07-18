@@ -8,6 +8,7 @@ function RegistrarAsesoria() {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm();
 
   const [asesores, setAsesores] = useState([]);
@@ -33,6 +34,8 @@ function RegistrarAsesoria() {
           },
         });
         alert("Sesión creada");
+        reset()
+        setIntervalo('')
       } catch (e) {
         console.log(e);
         alert("Horario no disponible");
