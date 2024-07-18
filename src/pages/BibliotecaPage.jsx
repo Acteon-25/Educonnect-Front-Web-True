@@ -1,9 +1,8 @@
 import { useEffect, useState } from 'react'
 import Libro from '../components/Libro';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
 import SectionContainer from '../components/SectionContainer';
 import axios from "axios";
+import SideBar from '../components/SideBar';
 
 const BibliotecaPage = () => {
 
@@ -24,8 +23,8 @@ const BibliotecaPage = () => {
   return (
 
     <>
-      <Header />
-      <SectionContainer className="py-8 px-5 lg:w-auto place-items-center my-0">
+      <SideBar />
+      <SectionContainer className="py-16 px-5 lg:w-auto place-items-center my-0">
         <h2 className='text-4xl'>Libros de la Biblioteca</h2>
         <p className='text-xl'>Revise nuestro contenido educativo para obtener la mejor experiencia de aprendizaje</p>
       </SectionContainer>
@@ -40,7 +39,6 @@ const BibliotecaPage = () => {
         </ul>
 
       </SectionContainer>
-      <Footer />
     </>
   );
 };
