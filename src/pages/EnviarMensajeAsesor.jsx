@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import SideBar from '../components/SideBar';
+import SideBar from '../components/SideBarAsesor';
 import SectionContainer from '../components/SectionContainer';
 
 const EnviarMensajeAsesor = () => {
