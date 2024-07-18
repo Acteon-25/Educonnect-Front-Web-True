@@ -52,7 +52,6 @@ const LoginPage = () => {
         navigate(`/login/asesor/${ruta}`)
 
       } else if (tipoUsuario == "ADMIN") {
-        localStorage.setItem('idAdmin', ruta);
         navigate("/")
       }
     } catch (e) {

@@ -1,6 +1,7 @@
 import { useForm } from "react-hook-form";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import Sidebar from '../components/SideBarAsesor'
 
 function Disponibilidad() {
   const [horarios, setHorarios] = useState({
@@ -77,6 +78,7 @@ function Disponibilidad() {
 
   return (
     <div className="flex justify-center items-center min-h-screen bg-gray-100">
+    <Sidebar/>
       <form onSubmit={handleSubmit(onSubmit)} className="bg-white p-6 rounded-lg shadow-md w-full max-w-4xl">
         <h2 className="text-2xl font-bold mb-4 text-center">Modificar Horarios</h2>
         
