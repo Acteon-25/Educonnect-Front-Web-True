@@ -2,12 +2,12 @@ import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import Avatar from "../icons/Avatar.svg";
+import SideBarAsesor from '../components/SideBarAsesor'
 
 function DetailsAceptarSesion() {
   const { id } = useParams();
   const [asesor, setAsesor] = useState(null);
   const navigate = useNavigate();
-
 
   useEffect(() => {
     const fetchAsesor = async () => {
@@ -76,12 +76,19 @@ function DetailsAceptarSesion() {
     }
   };
 
+  const handleBack = () => {
+    navigate(-1);  
+  };
+
   if (!asesor) {
     return <div className="text-center mt-8">Cargando...</div>;
   }
 
   return (
-    <div className="flex flex-col items-center justify-center h-screen bg-gray-100  p-4 md:p-8">
+    <>
+    <SideBarAsesor/>
+    <div className="flex flex-col items-center justify-center h-screen bg-gray-100 p-4 md:p-8">
+      
       <div className="max-w-md w-full space-y-8">
         <div className="bg-white rounded-lg shadow-lg p-6 space-y-6">
           <div className="flex flex-col items-center space-y-4">
@@ -153,11 +160,13 @@ function DetailsAceptarSesion() {
               Rechazar
             </button>
           </div>
+
         </div>
       </div>
     </div>
+    </>
+
   );
 }
-
 
 export default DetailsAceptarSesion;
