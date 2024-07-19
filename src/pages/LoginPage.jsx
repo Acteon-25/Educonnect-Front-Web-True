@@ -53,7 +53,7 @@ const LoginPage = () => {
         navigate(`/login/asesor/${ruta}`)
 
       } else if (tipoUsuario == "ADMIN") {
-        navigate("/")
+        navigate("/dashboard")
       }
     } catch (e) {
       alert("Credenciales Incorrectas")
