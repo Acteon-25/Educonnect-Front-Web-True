@@ -114,7 +114,7 @@ const LoginUserAsesorPage = () => {
                     <Link to={asesor.urlJitsi} className='text-blue-500 hover:text-blue-700'>
                       Enlace a la sesion
                     </Link>
-                    <a href={`/login/${id}`}>
+                    <a href={`/login/asesor/${id}`}>
                     <button onClick={() => handleDelete(asesor.idSesion)} className=" justify-self-end border border-gray-300 rounded-lg py-1 px-3 bg-white hover:bg-gray-50">
                       Eliminar
                     </button>
