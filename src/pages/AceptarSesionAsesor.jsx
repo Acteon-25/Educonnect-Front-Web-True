@@ -1,11 +1,14 @@
 import Notification from '../icons/Notification.svg'
 import Foto from '../img/Foto.png'
 import SesionList from '../components/SesionList'
+import SideBarAsesor from '../components/SideBarAsesor'
 
 const AceptarSesionAsesorPage = () => {
 
   return (
     <div className="">
+
+      <SideBarAsesor/>
 
       <div className='flex px-10 pb-10 pt-20 gap-4 w-screen justify-between'>
         <div className='flex float-right'>

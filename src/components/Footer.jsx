@@ -30,13 +30,13 @@ function Footer() {
             <h4 className="text-lg font-semibold mb-4">Planes</h4>
             <ul className="space-y-2 text-sm">
               <li>
-                <Link to="/basico">Basico</Link>
+                <Link to="/">Basico</Link>
               </li>
               <li>
-                <Link to="/premium">Premium</Link>
+                <Link to="/">Premium</Link>
               </li>
               <li>
-                <Link to="/superpremium">Super Premium</Link>
+                <Link to="/">Super Premium</Link>
               </li>
             </ul>
           </div>
@@ -48,31 +48,31 @@ function Footer() {
                 <Link to="/">Quiero ser asesor</Link>
               </li>
               <li>
-                <Link to="/">OTRO</Link>
+                <Link to="/">Soporte</Link>
               </li>
               <li>
-                <Link to="/">OTRO</Link>
+                <Link to="/">Ventas</Link>
               </li>
               <li>
-                <Link to="/">OTRO</Link>
+                <Link to="/">Asociaciones</Link>
               </li>
             </ul>
           </div>
 
           <div>
-            <h4 className="text-lg font-semibold mb-4">Nosotros</h4>
+            <h4 className="text-lg font-semibold mb-4">Empresa</h4>
             <ul className="space-y-2 text-sm">
+              <li>
+                <Link to="/">Sobre Nosotros</Link>
+              </li>
+              <li>
+                <Link to="/">Nuestro Equipo</Link>
+              </li>
               <li>
                 <Link to="/">Blog</Link>
               </li>
               <li>
-                <Link to="/">Guia</Link>
-              </li>
-              <li>
-                <Link to="/">Testimonios</Link>
-              </li>
-              <li>
-                <Link to="/">Licencia</Link>
+                <Link to="/">Noticias</Link>
               </li>
             </ul>
           </div>
