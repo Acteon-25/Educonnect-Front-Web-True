@@ -13,10 +13,10 @@ const HomePage = () => {
     <>
       <Header />
       <SectionContainer className="grid grid-cols-2 items-center my-8">
-        <h1 className="text-5xl font-bold">Donde el conocimiento y el éxito se encuentran</h1>
+        <h1 className="md:text-5xl text-3xl font-bold">Donde el conocimiento y el éxito se encuentran</h1>
         <img src="https://st2.depositphotos.com/2379655/7898/i/450/depositphotos_78986424-stock-photo-curious-school-student-reading-a.jpg" alt="" className="w-full rounded-lg shadow-lg" />
       </SectionContainer>
-      <SectionContainer className="text-center my-12">
+      <SectionContainer className="text-center md:my-12 ">
         <div className="mb-8">
           <h2 className="text-3xl font-semibold">Nuestros Éxitos</h2>
           <p className="text-lg mt-2">Estamos orgullosos de la enseñanza que brindan nuestros asesores, pendientes siempre de la educación que se imparte a los alumnos</p>
