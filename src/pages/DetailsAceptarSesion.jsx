@@ -16,7 +16,7 @@ function DetailsAceptarSesion() {
         console.log(token)
         console.log(id)
         const response = await axios.get(
-          `http://localhost:8080/sesiones/${id}`,
+          `https://educonnectb.onrender.com/sesiones/${id}`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -38,7 +38,7 @@ function DetailsAceptarSesion() {
     try {
       const token = localStorage.getItem("token");
       await axios.put(
-        `http://localhost:8080/sesiones/${id}/aceptar`,
+        `https://educonnectb.onrender.com/sesiones/${id}/aceptar`,
         null,
         {
           headers: {
@@ -58,7 +58,7 @@ function DetailsAceptarSesion() {
     try {
       const token = localStorage.getItem("token");
       await axios.put(
-        `http://localhost:8080/sesiones/${id}/rechazar`,
+        `https://educonnectb.onrender.com/sesiones/${id}/rechazar`,
         null,
         {
           headers: {

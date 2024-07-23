@@ -25,7 +25,7 @@ function CalificarEstudiante() {
 
     try {
       await axios.post(
-        `http://localhost:8080/asesores/${idSesion}/calificaciones`, enviarCalificacion,
+        `https://educonnectb.onrender.com/asesores/${idSesion}/calificaciones`, enviarCalificacion,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -47,7 +47,7 @@ function CalificarEstudiante() {
     const getUsuarios = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:8080/asesores/${id}/sesiones`,
+          `https://educonnectb.onrender.com/asesores/${id}/sesiones`,
           {
             headers: {
               Authorization: `Bearer ${token}`,

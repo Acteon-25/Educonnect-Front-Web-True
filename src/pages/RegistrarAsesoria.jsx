@@ -28,7 +28,7 @@ function RegistrarAsesoria() {
 
     const enviarSesion = async () => {
       try {
-        await axios.post("http://localhost:8080/sesiones/solicitar", sesion, {
+        await axios.post("https://educonnectb.onrender.com/sesiones/solicitar", sesion, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -51,7 +51,7 @@ function RegistrarAsesoria() {
     const getAsesores = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:8080/estudiantes/asesores",
+          "https://educonnectb.onrender.com/estudiantes/asesores",
           {
             headers: {
               Authorization: `Bearer ${token}`,

@@ -21,7 +21,7 @@ const RegisterPage = () => {
           correoElectronico: email,
           contrasena: contrasena,
         };
-        const response = await axios.post('http://localhost:8080/registro/estudiante', nuevoEstudiante);
+        const response = await axios.post('https://educonnectb.onrender.com/registro/estudiante', nuevoEstudiante);
         localStorage.setItem('token', response.data.tokenTemporal); 
         navigate('/pricing/')
       }catch (e){

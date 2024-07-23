@@ -13,7 +13,7 @@ const EnviarMensaje = () => {
 
   const getNombre = () => {
     const token = localStorage.getItem('token');
-    axios.get("http://localhost:8080/estudiantes/perfil", {
+    axios.get("https://educonnectb.onrender.com/estudiantes/perfil", {
       headers: {
         'Authorization': `Bearer ${token}`
       }
@@ -27,7 +27,7 @@ const EnviarMensaje = () => {
 
   const getAsesores = () => {
     const token = localStorage.getItem('token');
-    axios.get("http://localhost:8080/estudiantes/asesores", {
+    axios.get("https://educonnectb.onrender.com/estudiantes/asesores", {
       headers: {
         'Authorization': `Bearer ${token}`
       }
@@ -41,7 +41,7 @@ const EnviarMensaje = () => {
   const handleSubmit = async () => {
     const token = localStorage.getItem('token');
     try {
-      const response = await fetch('http://localhost:8080/email/send', {
+      const response = await fetch('https://educonnectb.onrender.com/email/send', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded',

@@ -10,7 +10,7 @@ function MembresiaDetallesPage() {
 
   const handleClickDelete = () => {
     const token = localStorage.getItem('token');
-    axios.delete("http://localhost:8080/membresias/cancelar", {
+    axios.delete("https://educonnectb.onrender.com/membresias/cancelar", {
       headers: {
         'Authorization': `Bearer ${token}`
       }
@@ -38,7 +38,7 @@ function MembresiaDetallesPage() {
     const obtenerURL = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:8080/membresias/mi-membresia/comprobante`,
+          `https://educonnectb.onrender.com/membresias/mi-membresia/comprobante`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -63,7 +63,7 @@ function MembresiaDetallesPage() {
     const getDetalles = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:8080/membresias/mi-membresia`,
+          `https://educonnectb.onrender.com/membresias/mi-membresia`,
           {
             headers: {
               Authorization: `Bearer ${token}`,

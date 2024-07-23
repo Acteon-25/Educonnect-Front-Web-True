@@ -32,7 +32,7 @@ function Pasarela() {
       }
       console.log(compra);
       try {
-        const response = await axios.post('http://localhost:8080/membresias/comprar', compra)
+        const response = await axios.post('https://educonnectb.onrender.com/membresias/comprar', compra)
         console.log("Compra exitosa")
         const token = response.data
         localStorage.setItem('token', token)

@@ -15,7 +15,7 @@ const LoginUserAsesorPage = () => {
   const [asesores, setAsesores] = useState([]);
 
   const getNombre = () => {
-    axios.get("http://localhost:8080/asesores/perfil", {
+    axios.get("https://educonnectb.onrender.com/asesores/perfil", {
       headers: {
         'Authorization': `Bearer ${token}`
       }
@@ -30,7 +30,7 @@ const LoginUserAsesorPage = () => {
   }
 
   const getSesionesSolicitadas = () => {
-    axios.get(`http://localhost:8080/asesores/${id}/sesiones`, {
+    axios.get(`https://educonnectb.onrender.com/asesores/${id}/sesiones`, {
       headers: {
         'Authorization': `Bearer ${token}`
       }
@@ -46,7 +46,7 @@ const LoginUserAsesorPage = () => {
   const handleDelete = async (idSesion) => {
     try {
       await axios.delete(
-        `http://localhost:8080/asesores/${idSesion}`,
+        `https://educonnectb.onrender.com/asesores/${idSesion}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,

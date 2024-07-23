@@ -11,7 +11,7 @@ function PerfilAsesor() {
   const [formData, setFormData] = useState({})
 
   const handleClickDelete = () => {
-    axios.delete("http://localhost:8080/membresias/cancelar", {
+    axios.delete("https://educonnectb.onrender.com/membresias/cancelar", {
       headers: {
         'Authorization': `Bearer ${tokenCancelar}`
       }
@@ -28,7 +28,7 @@ function PerfilAsesor() {
           throw new Error('No hay token disponible');
         }
 
-        const response = await axios.get('http://localhost:8080/asesores/perfil', {
+        const response = await axios.get('https://educonnectb.onrender.com/asesores/perfil', {
           headers: {
             Authorization: `Bearer ${token}`
           }
@@ -60,7 +60,7 @@ function PerfilAsesor() {
     event.preventDefault();
     try {
       const token = localStorage.getItem('token');
-      await axios.put('http://localhost:8080/asesores/actualizar', formData, {
+      await axios.put('https://educonnectb.onrender.com/asesores/actualizar', formData, {
         headers: {
           Authorization: `Bearer ${token}`
         }

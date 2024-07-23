@@ -12,7 +12,7 @@ function SesionList() {
     const fetchAsesores = async () => {
 
       try {
-        const response = await axios.get(`http://localhost:8080/asesores/${id}/sesiones`, {
+        const response = await axios.get(`https://educonnectb.onrender.com/asesores/${id}/sesiones`, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`,
           },

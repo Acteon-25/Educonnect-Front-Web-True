@@ -25,7 +25,7 @@ function PerfilUsuario() {
           throw new Error('No hay token disponible');
         }
 
-        const response = await axios.get('http://localhost:8080/estudiantes/perfil', {
+        const response = await axios.get('https://educonnectb.onrender.com/estudiantes/perfil', {
           headers: {
             Authorization: `Bearer ${token}`
           }
@@ -53,7 +53,7 @@ function PerfilUsuario() {
     event.preventDefault();
     try {
       const token = localStorage.getItem('token');
-      await axios.put('http://localhost:8080/estudiantes/actualizar', formData, {
+      await axios.put('https://educonnectb.onrender.com/estudiantes/actualizar', formData, {
         headers: {
           Authorization: `Bearer ${token}`
         }

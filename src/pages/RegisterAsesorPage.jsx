@@ -28,7 +28,7 @@ const RegisterAsesorPage = () => {
 
     try {
 
-      const response = await axios.post('http://localhost:8080/registro/asesor', nuevoAsesor);
+      const response = await axios.post('https://educonnectb.onrender.com/registro/asesor', nuevoAsesor);
       localStorage.setItem('token', response.data.tokenTemporal);
       navigate('/')
     } catch (e) {
