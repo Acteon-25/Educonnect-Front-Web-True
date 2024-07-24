@@ -9,7 +9,7 @@ function AsesorList() {
   useEffect(() => {
     const fetchAsesores = async () => {
       try {
-        const response = await axios.get('http://localhost:8080/admin/asesores/pendientes', { 
+        const response = await axios.get('https://educonnectb.onrender.com/admin/asesores/pendientes', { 
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`,
           },

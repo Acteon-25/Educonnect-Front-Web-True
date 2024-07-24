@@ -14,7 +14,7 @@ const ConfirmarContraPage = () => {
 
   async function change() {
     try {
-      const res = await axios.post(`http://localhost:8080/restablecer-contrasena/${tokenRestablecimiento}`, {
+      const res = await axios.post(`https://educonnectb.onrender.com/restablecer-contrasena/${tokenRestablecimiento}`, {
         nuevaContrasena: contrasena,
       })
       console.log(res)

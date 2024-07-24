@@ -19,7 +19,7 @@ const LoginPage = () => {
         contrasena: contrasena,
       }
 
-      const response = await axios.post('http://localhost:8080/login', details);
+      const response = await axios.post('https://educonnectb.onrender.com/login', details);
       const token = response.data.token;
       const tipoUsuario = response.data.tipoUsuario;
       console.log(tipoUsuario);
@@ -27,7 +27,7 @@ const LoginPage = () => {
       localStorage.setItem('token', token);
 
       if (tipoUsuario == "ESTUDIANTE") {
-        const resEstudiante = await axios.get("http://localhost:8080/estudiantes/perfil", {
+        const resEstudiante = await axios.get("https://educonnectb.onrender.com/estudiantes/perfil", {
           headers: {
             'Authorization': `Bearer ${token}`
           }
@@ -39,7 +39,7 @@ const LoginPage = () => {
 
       } else if (tipoUsuario == "ASESOR") {
 
-        const resAsesor = await axios.get("http://localhost:8080/asesores/perfil", {
+        const resAsesor = await axios.get("https://educonnectb.onrender.com/asesores/perfil", {
           headers: {
             'Authorization': `Bearer ${token}`
           }
@@ -53,7 +53,7 @@ const LoginPage = () => {
         navigate(`/login/asesor/${ruta}`)
 
       } else if (tipoUsuario == "ADMIN") {
-        navigate("/")
+        navigate("/dashboard")
       }
     } catch (e) {
       alert("Credenciales Incorrectas")

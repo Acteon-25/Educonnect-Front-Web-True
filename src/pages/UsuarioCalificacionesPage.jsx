@@ -12,7 +12,7 @@ function UsuarioCalificacionesPage() {
     const getCalificaciones = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:8080/estudiantes/${id}/calificaciones`,
+          `https://educonnectb.onrender.com/estudiantes/${id}/calificaciones`,
           {
             headers: {
               Authorization: `Bearer ${token}`,

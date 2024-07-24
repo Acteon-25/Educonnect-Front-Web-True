@@ -14,7 +14,7 @@ function AsesorDetailsPage() {
       try {
         const token = localStorage.getItem("token");
         const response = await axios.get(
-          `http://localhost:8080/admin/asesores/${id}`,
+          `https://educonnectb.onrender.com/admin/asesores/${id}`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -35,7 +35,7 @@ function AsesorDetailsPage() {
     try {
       const token = localStorage.getItem("token");
       await axios.put(
-        `http://localhost:8080/admin/asesores/${id}/aprobar`,
+        `https://educonnectb.onrender.com/admin/asesores/${id}/aprobar`,
         null,
         {
           headers: {
@@ -55,7 +55,7 @@ function AsesorDetailsPage() {
     try {
       const token = localStorage.getItem("token");
       await axios.put(
-        `http://localhost:8080/admin/asesores/${id}/rechazar`,
+        `https://educonnectb.onrender.com/admin/asesores/${id}/rechazar`,
         null,
         {
           headers: {

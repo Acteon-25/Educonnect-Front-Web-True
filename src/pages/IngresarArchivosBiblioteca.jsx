@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import axios from 'axios';
-import SideBar from '../components/SideBarAsesor'
+import { useNavigate } from 'react-router-dom';
+
 
 function IngresarArchivosBiblioteca() {
+  const navigate = useNavigate();
 
   const [titulo, setTitulo] = useState('');
   const [curso, setCurso] = useState('');
@@ -52,9 +54,12 @@ function IngresarArchivosBiblioteca() {
 
 
   return (
-    <div className='  '>
-      <SideBar />
-      <div className="container mx-auto p-4 pt-20">
+    <div className='flex flex-col items-center justify-center py-5'>
+      <div className='bg-orange-400 rounded-xl py-1 px-3 text-xl text-white text-center'>
+        <button onClick={() => navigate(-1)}>Retroceder</button>
+      </div>
+
+      <div className="container mx-auto p-4">
         <h1 className="text-2xl font-bold mb-4">Ingresar Archivos a la Biblioteca</h1>
 
         {mensaje && <p className="text-green-500 mb-4">{mensaje}</p>}

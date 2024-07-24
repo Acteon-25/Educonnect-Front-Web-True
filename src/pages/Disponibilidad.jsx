@@ -32,7 +32,7 @@ function Disponibilidad() {
 
     const getHorarios = async () => {
       const response = await axios.get(
-        `http://localhost:8080/asesores/${idAsesor}/horario`,
+        `https://educonnectb.onrender.com/asesores/${idAsesor}/horario`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -68,7 +68,7 @@ function Disponibilidad() {
   const sendHorarios = async (nuevo) => {
     try {
       await axios.put(
-        `http://localhost:8080/asesores/${idAsesor}/horario`,
+        `https://educonnectb.onrender.com/asesores/${idAsesor}/horario`,
         nuevo,
         {
           headers: {

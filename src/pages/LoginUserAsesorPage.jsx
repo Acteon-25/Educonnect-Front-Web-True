@@ -15,7 +15,7 @@ const LoginUserAsesorPage = () => {
   const [asesores, setAsesores] = useState([]);
 
   const getNombre = () => {
-    axios.get("http://localhost:8080/asesores/perfil", {
+    axios.get("https://educonnectb.onrender.com/asesores/perfil", {
       headers: {
         'Authorization': `Bearer ${token}`
       }
@@ -30,7 +30,7 @@ const LoginUserAsesorPage = () => {
   }
 
   const getSesionesSolicitadas = () => {
-    axios.get(`http://localhost:8080/asesores/${id}/sesiones`, {
+    axios.get(`https://educonnectb.onrender.com/asesores/${id}/sesiones`, {
       headers: {
         'Authorization': `Bearer ${token}`
       }
@@ -46,7 +46,7 @@ const LoginUserAsesorPage = () => {
   const handleDelete = async (idSesion) => {
     try {
       await axios.delete(
-        `http://localhost:8080/asesores/${idSesion}`,
+        `https://educonnectb.onrender.com/asesores/${idSesion}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -114,7 +114,7 @@ const LoginUserAsesorPage = () => {
                     <Link to={asesor.urlJitsi} className='text-blue-500 hover:text-blue-700'>
                       Enlace a la sesion
                     </Link>
-                    <a href={`/login/${id}`}>
+                    <a href={`/login/asesor/${id}`}>
                     <button onClick={() => handleDelete(asesor.idSesion)} className=" justify-self-end border border-gray-300 rounded-lg py-1 px-3 bg-white hover:bg-gray-50">
                       Eliminar
                     </button>
