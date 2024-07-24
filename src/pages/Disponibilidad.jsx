@@ -2,8 +2,14 @@ import { useForm } from "react-hook-form";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Sidebar from '../components/SideBarAsesor'
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
+
 
 function Disponibilidad() {
+
+  const MySwal = withReactContent(Swal);
+
   const [horarios, setHorarios] = useState({
     lunes: '',
     martes: '',
@@ -70,7 +76,12 @@ function Disponibilidad() {
           },
         }
       );
-      alert('Horarios Actualizados');
+      MySwal.fire({
+        title: '¡Exito!',
+        text: 'Tus horarios han sido actualizados correctamente',
+        icon: 'success',
+        confirmButtonText: 'Aceptar',
+      });
     } catch (e) {
       console.log(e);
     }

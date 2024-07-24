@@ -2,6 +2,8 @@ import { useState } from "react";
 import axios from "axios";
 import SideBar from "../components/SideBarAsesor";
 import {useEffect} from 'react'
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
 
 function IngresarInformacionPage() {
   const [informe, setInforme] = useState("");
@@ -9,6 +11,8 @@ function IngresarInformacionPage() {
   const [error, setError] = useState(null);
   const [estudiante, setEstudiante] = useState();
   const [usuarios, setUsuarios] = useState([])
+
+  const MySwal = withReactContent(Swal);
 
   useEffect(() => {
     const fetchUsuarios = async () => {
@@ -53,6 +57,13 @@ function IngresarInformacionPage() {
       setMensaje("Informe enviado con éxito");
       setEstudiante('');
       setInforme("");
+      MySwal.fire({
+        title: '¡Exito!',
+        text: 'Calificación Ingresada',
+        icon: 'success',
+        confirmButtonText: 'Aceptar',
+      });
+      
     } catch (error) {
       console.error("Error al enviar el Informe:", error);
       setError(
