@@ -4,7 +4,7 @@ import notificationService from '../services/notificationService';
 function Notifications() {
   const [notifications, setNotifications] = useState([]);
   const [showNotifications, setShowNotifications] = useState(false);
-  const user = localStorage.getItem('id');
+  const user = localStorage.getItem('idNotificacion');
   const token = localStorage.getItem('token');
 
   useEffect(() => {
@@ -12,7 +12,6 @@ function Notifications() {
       if (user) {
         try {
           const data = await notificationService.getNotifications(user, token);
-          console.log(data);
           setNotifications(data);
         } catch (error) {
           console.error('Error al obtener notificaciones:', error);
@@ -22,14 +21,31 @@ function Notifications() {
 
     fetchNotifications();
 
-    const intervalId = setInterval(fetchNotifications, 5000);
+    notificationService.connect(user, handleNewNotification);
 
-    return () => clearInterval(intervalId);
+    return () => {
+      notificationService.disconnect();
+    };
   }, [user, token]);
 
-  const handleNewNotification = (notification) => {
-    setNotifications(prevNotifications => [...prevNotifications, notification]);
+  const handleNewNotification = (notificationData) => {
+    setNotifications(prevNotifications => {
+      const existingNotification = prevNotifications.find(notification => notification.idNotificacion === notificationData.id);
+      if (existingNotification) {
+        return prevNotifications;
+      }
+      return [
+        ...prevNotifications,
+        {
+          idNotificacion: notificationData.id,
+          mensaje: notificationData.message,
+          timestamp: new Date().toLocaleString(),
+          leido: false
+        }
+      ];
+    });
   };
+
 
   const toggleNotifications = () => {
     setShowNotifications(!showNotifications);
@@ -38,25 +54,20 @@ function Notifications() {
   const handleMarkAsRead = async (notificationId) => {
     try {
       await notificationService.markAsRead(user, notificationId, token);
-      setNotifications(prevNotifications => prevNotifications.filter((_, i) => i !== notificationId));
+      setNotifications(prevNotifications => prevNotifications.filter(notification => notification.idNotificacion !== notificationId));
     } catch (error) {
-      console.error('Error al marcar la notificación como leída:', error);
+      console.error("Error al marcar la notificación como leída:", error);
     }
-
-
   };
 
   const handleMarkAllAsRead = async () => {
     try {
       await notificationService.markAllAsRead(user, token);
+      setNotifications([]);
     } catch (error) {
-      console.error('Error al marcar la notificación como leída:', error);
+      console.error('Error al marcar todas las notificaciones como leídas:', error);
     }
-
-
   };
-
-  console.log(notifications);
 
   return (
     <div className="relative">
@@ -84,9 +95,9 @@ function Notifications() {
               notifications.map((notification, index) => (
                 <li key={index} className="p-2 border-b">
                   <p>{notification.mensaje}</p>
-                  <p className="text-xs text-gray-500">{notification}</p>
-                  {!notification.leido && ( // Solo mostrar el botón si la notificación no ha sido leída
-                    <button onClick={() => handleMarkAsRead(index)} className="text-blue-500 hover:underline">
+                  <p className="text-xs text-gray-500">{notification.timestamp}</p>
+                  {!notification.leido && notification.idNotificacion && (
+                    <button onClick={() => handleMarkAsRead(notification.idNotificacion)} className="text-blue-500 hover:underline">
                       Marcar como leída
                     </button>
                   )}
@@ -102,4 +113,4 @@ function Notifications() {
   );
 }
 
-export default Notifications
+export default Notifications;

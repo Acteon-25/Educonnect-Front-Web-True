@@ -13,26 +13,38 @@ const RegisterAsesorPage = () => {
   const [nombre, setNombre] = useState();
   const [contrasena, setContrasena] = useState();
   const [especialidad, setEspecialidad] = useState()
+  const [file, setFile] = useState(null);
 
 
   async function registrarAsesor() {
-
     const nuevoAsesor = {
-      usuario: {
-        correoElectronico: email,
-        nombre: nombre,
-        contrasena: contrasena,
-      },
-      especialidad: especialidad,
+        usuario: {
+          correoElectronico: email,
+          nombre: nombre,
+          contrasena: contrasena,
+        },
+        especialidad: especialidad,
     }
+
+    const formData = new FormData();
+    formData.append('asesor', JSON.stringify(nuevoAsesor));
+    formData.append('archivo', file);
 
     try {
 
-      const response = await axios.post('https://educonnectb.onrender.com/registro/asesor', nuevoAsesor);
+      const response = await axios.post('https://educonnectb.onrender.com/registro/asesor', formData, 
+        {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+          },
+        }  
+
+      );
       localStorage.setItem('token', response.data.tokenTemporal);
-      navigate('/')
     } catch (e) {
       console.log(e);
+    }finally{
+      navigate('/')
     }
   }
 
@@ -84,7 +96,9 @@ const RegisterAsesorPage = () => {
               onChange={(e) => setEspecialidad(e.target.value)}
             />
             <h3>Ingreso de archivos</h3>
-            <input type="file" placeholder="Ingrese su contraseña" className="border border-sky-500 rounded-full px-4 py-1"
+            <input 
+            onChange={(e) => setFile(e.target.files[0])}
+            type="file" placeholder="Ingrese su contraseña" className="border border-sky-500 rounded-full px-4 py-1"
             />
             <button className="bg-sky-500 rounded-full text-white px-6 py-1 block my-4 ">
               Registrate

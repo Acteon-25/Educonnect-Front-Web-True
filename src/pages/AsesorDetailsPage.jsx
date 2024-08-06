@@ -2,12 +2,12 @@ import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import Avatar from "../icons/Avatar.svg";
+import ArchivoAsesor from "../components/ArchivoAsesor";
 
 function AsesorDetailsPage() {
   const { id } = useParams();
   const [asesor, setAsesor] = useState(null);
   const navigate = useNavigate();
-
 
   useEffect(() => {
     const fetchAsesor = async () => {
@@ -22,6 +22,7 @@ function AsesorDetailsPage() {
           }
         );
         setAsesor(response.data);
+        console.log(asesor.archivos[0]);
         // navigate('/administrarAsesores')
       } catch (error) {
         console.error("Error fetching asesor details:", error);
@@ -43,10 +44,10 @@ function AsesorDetailsPage() {
           },
         }
       );
-      navigate('/administrarAsesores')
+      navigate("/administrarAsesores");
       console.log("Asesor aprobado:", asesor.idAsesor);
     } catch (error) {
-        // console.log(token);
+      // console.log(token);
       console.error("Error al aprobar asesor:", error);
     }
   };
@@ -62,14 +63,12 @@ function AsesorDetailsPage() {
             Authorization: `Bearer ${token}`,
           },
         }
-
       );
-      navigate('/administrarAsesores')
+      navigate("/administrarAsesores");
 
       console.log("Asesor rechazado:", asesor.idAsesor);
     } catch (error) {
       console.error("Error al rechazar asesor:", error);
-
     }
   };
 
@@ -91,9 +90,7 @@ function AsesorDetailsPage() {
               <h3 className="text-lg font-medium dark:text-gray-900">
                 {asesor.usuario.nombre}
               </h3>
-              <p className="text-sm text-gray-500 dark:text-gray-500">
-                Asesor
-              </p>
+              <p className="text-sm text-gray-500 dark:text-gray-500">Asesor</p>
             </div>
           </div>
 
@@ -149,12 +146,8 @@ function AsesorDetailsPage() {
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-3">
                 <div>
-                  <h4 className="text-lg font-medium dark:text-gray-900">
-                    Adjuntado
-                  </h4>
-                  <p className="text-sm dark:text-gray-500">
-                    Sin informacion....
-                  </p>
+                  <h3>Archivos adjuntos:</h3>
+                  <ArchivoAsesor archivo={asesor.archivos[0]} />
                 </div>
               </div>
             </div>
@@ -179,6 +172,5 @@ function AsesorDetailsPage() {
     </div>
   );
 }
-
 
 export default AsesorDetailsPage;

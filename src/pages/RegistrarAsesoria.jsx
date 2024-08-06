@@ -36,6 +36,7 @@ function RegistrarAsesoria() {
         alert("Sesión creada");
         reset()
         setIntervalo('')
+        
       } catch (e) {
         console.log(e);
         alert("Horario no disponible");
@@ -80,17 +81,23 @@ function RegistrarAsesoria() {
   const handleChangeDia = (event) => {
     const selectedFecha = event.target.value;
     const diasSemana = [
+      "domingo",
       "lunes",
-      "martes",
-      "miércoles",
+      "martes", 
+      "miercoles",
       "jueves",
       "viernes",
-      "sábado",
-      "domingo",
+      "sabado",
     ];
-    const selectedDia = diasSemana[new Date(selectedFecha).getDay()];
+    
+    const fecha = new Date(selectedFecha);
+    const selectedDia = diasSemana[fecha.getUTCDay()];
 
-    setIntervalo(horarios[selectedDia]);
+    if (horarios[selectedDia]) {
+      setIntervalo(horarios[selectedDia]);
+    } else {
+      setIntervalo(null);
+    }
   };
 
   return (
