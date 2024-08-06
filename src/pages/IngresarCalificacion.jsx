@@ -2,9 +2,14 @@ import axios from "axios";
 import SideBar from "../components/SideBarAsesor";
 import { useForm } from 'react-hook-form';
 import { useEffect, useState } from 'react';
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
+
 
 function CalificarEstudiante() {
   const [usuarios, setUsuarios] = useState([]);
+  const MySwal = withReactContent(Swal);
+
 
   const { register, handleSubmit, formState: { errors }, reset } = useForm();
 
@@ -33,7 +38,12 @@ function CalificarEstudiante() {
         }
       );
 
-      alert('Calificación enviada');
+      MySwal.fire({
+        title: '¡Exito!',
+        text: 'Calificación Ingresada',
+        icon: 'success',
+        confirmButtonText: 'Aceptar',
+      });
       reset();
     } catch (e) {
       console.log(e);
