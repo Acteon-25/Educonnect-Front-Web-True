@@ -36,7 +36,6 @@ function RegistrarAsesoria() {
         alert("Sesión creada");
         reset()
         setIntervalo('')
-        
       } catch (e) {
         console.log(e);
         alert("Horario no disponible");
@@ -48,7 +47,6 @@ function RegistrarAsesoria() {
 
   useEffect(() => {
     const token = localStorage.getItem("token");
-
     const getAsesores = async () => {
       try {
         const response = await axios.get(
@@ -83,13 +81,13 @@ function RegistrarAsesoria() {
     const diasSemana = [
       "domingo",
       "lunes",
-      "martes", 
+      "martes",
       "miercoles",
       "jueves",
       "viernes",
       "sabado",
     ];
-    
+
     const fecha = new Date(selectedFecha);
     const selectedDia = diasSemana[fecha.getUTCDay()];
 

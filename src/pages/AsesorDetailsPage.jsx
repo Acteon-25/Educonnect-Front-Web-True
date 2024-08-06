@@ -22,11 +22,8 @@ function AsesorDetailsPage() {
           }
         );
         setAsesor(response.data);
-        console.log(asesor.archivos[0]);
-        // navigate('/administrarAsesores')
       } catch (error) {
         console.error("Error fetching asesor details:", error);
-        // console.error("Error fetching asesor details:", error);
       }
     };
     fetchAsesor();
@@ -45,9 +42,7 @@ function AsesorDetailsPage() {
         }
       );
       navigate("/administrarAsesores");
-      console.log("Asesor aprobado:", asesor.idAsesor);
     } catch (error) {
-      // console.log(token);
       console.error("Error al aprobar asesor:", error);
     }
   };
@@ -65,8 +60,6 @@ function AsesorDetailsPage() {
         }
       );
       navigate("/administrarAsesores");
-
-      console.log("Asesor rechazado:", asesor.idAsesor);
     } catch (error) {
       console.error("Error al rechazar asesor:", error);
     }

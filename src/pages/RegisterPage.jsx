@@ -6,7 +6,6 @@ import Header from "../components/Header"
 import Footer from "../components/Footer"
 import axios from 'axios'
 
-
 const RegisterPage = () => {
   const navigate = useNavigate()
 
@@ -14,26 +13,26 @@ const RegisterPage = () => {
   const [nombre, setNombre] = useState();
   const [contrasena, setContrasena] = useState();
 
-  async function crearEstudiante () {
-      try {
-        const nuevoEstudiante = {
-          nombre: nombre,
-          correoElectronico: email,
-          contrasena: contrasena,
-        };
-        const response = await axios.post('https://educonnectb.onrender.com/registro/estudiante', nuevoEstudiante);
-        localStorage.setItem('token', response.data.tokenTemporal); 
-        navigate('/pricing/')
-      }catch (e){
-        console.log('Error al crear usuario', e);
-      }
+  async function crearEstudiante() {
+    try {
+      const nuevoEstudiante = {
+        nombre: nombre,
+        correoElectronico: email,
+        contrasena: contrasena,
+      };
+      const response = await axios.post('https://educonnectb.onrender.com/registro/estudiante', nuevoEstudiante);
+      localStorage.setItem('token', response.data.tokenTemporal);
+      navigate('/pricing/')
+    } catch (e) {
+      console.log('Error al crear usuario', e);
     }
+  }
 
-    const handleSubmit = (e) => {
-      e.preventDefault()
-      crearEstudiante()
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    crearEstudiante()
+  }
 
-    }
   return (
     <>
       <Header />
@@ -55,28 +54,26 @@ const RegisterPage = () => {
           </div>
           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam, iusto.</p>
           <form onSubmit={handleSubmit}>
-          <h3>Email: </h3>
-          <input type="email" name="" id="" placeholder="Ingrese su email" className="border border-sky-500 rounded-full px-4 py-1"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)} 
-          required/>
-          <h3>Nombre: </h3>
-          <input type="text" placeholder="Ingrese su username" className="border border-sky-500 rounded-full px-4 py-1" 
-          value={nombre}
-          onChange={(e) => setNombre(e.target.value)}
-          required />
-          <h3>Contraseña</h3>
-          <input type="password" placeholder="Ingrese su contraseña" className="border border-sky-500 rounded-full px-4 py-1"
-           value={contrasena}
-           onChange={(e) => setContrasena(e.target.value)}
-           required 
-           minLength="8"/>
-          <button className="bg-sky-500 rounded-full text-white px-6 py-1 block my-4 ">
-            Registrate
-          </button>
-
+            <h3>Email: </h3>
+            <input type="email" name="" id="" placeholder="Ingrese su email" className="border border-sky-500 rounded-full px-4 py-1"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required />
+            <h3>Nombre: </h3>
+            <input type="text" placeholder="Ingrese su username" className="border border-sky-500 rounded-full px-4 py-1"
+              value={nombre}
+              onChange={(e) => setNombre(e.target.value)}
+              required />
+            <h3>Contraseña</h3>
+            <input type="password" placeholder="Ingrese su contraseña" className="border border-sky-500 rounded-full px-4 py-1"
+              value={contrasena}
+              onChange={(e) => setContrasena(e.target.value)}
+              required
+              minLength="8" />
+            <button className="bg-sky-500 rounded-full text-white px-6 py-1 block my-4 ">
+              Registrate
+            </button>
           </form>
-         
         </div>
       </SectionContainer>
       <Footer />

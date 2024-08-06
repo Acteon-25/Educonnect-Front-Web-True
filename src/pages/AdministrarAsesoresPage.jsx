@@ -3,11 +3,9 @@ import Notification from '../icons/Notification.svg'
 import Foto from '../img/Foto.png'
 import AsesorList from '../components/AsesorList'
 
-
 const AdministrarAsesoresPage = () => {
 
   const { id } = useParams()
-
   return (
     <div className="">
 
@@ -20,18 +18,15 @@ const AdministrarAsesoresPage = () => {
 
           <img src={Notification} alt="" />
           <img src={Foto} alt="" className='size-12 rounded-full' />
-          <h2>Bienvenido Jean{id}</h2>
+          <h2>Bienvenido</h2>
           <p>Admin</p>
         </div>
       </div>
 
-
       <div className='grid grid-cols-1 place-items-center w-screen'>
-        <h3 className='text-3xl'>Administracion de solicitudes de Asesores</h3>
+        <h3 className='text-3xl'>Administración de solicitudes de Asesores</h3>
         <br />
-
         <AsesorList />
-        
       </div>
     </div>
   )

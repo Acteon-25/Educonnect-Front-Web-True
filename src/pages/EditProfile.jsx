@@ -8,9 +8,8 @@ const DashboardPage = () => {
   const { id } = useParams()
 
   return (
-    <div className="">
+    <div>
       <SideBar />
-
       <div className='flex px-10 pb-10 pt-20 gap-4 w-screen justify-between'>
         <div className='flex float-right'>
           <img src={""} alt="" />

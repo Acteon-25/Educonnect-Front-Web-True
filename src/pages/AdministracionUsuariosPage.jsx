@@ -1,15 +1,12 @@
 import SectionContainer from "../components/SectionContainer"
 import SideBar from "../components/SideBar"
 
-
-
 const AdministracionUsuariosPage = () => {
-
 
   return (
     <div>
       <SideBar />
-      <h1 className="text-5xl font-bold text-center my-4 pt-20">Administracion de Usuarios</h1>
+      <h1 className="text-5xl font-bold text-center my-4 pt-20">Administración de Usuarios</h1>
       <SectionContainer>
 
         <table class="border-collapse w-full">

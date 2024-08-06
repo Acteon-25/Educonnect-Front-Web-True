@@ -19,8 +19,6 @@ const EnviarMensaje = () => {
       }
     })
       .then((res) => {
-        console.log(res.data)
-        console.log(res.data.correoElectronico)
         setNombre(res.data.nombre)
       })
   }
@@ -33,7 +31,6 @@ const EnviarMensaje = () => {
       }
     })
       .then((res) => {
-        console.log(res.data)
         setAsesores(res.data)
       })
   }

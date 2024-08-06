@@ -22,8 +22,6 @@ const LoginPage = () => {
       const response = await axios.post('https://educonnectb.onrender.com/login', details);
       const token = response.data.token;
       const tipoUsuario = response.data.tipoUsuario;
-      console.log(tipoUsuario);
-      console.log(token);
       localStorage.setItem('token', token);
 
       if (tipoUsuario == "ESTUDIANTE") {
@@ -47,13 +45,11 @@ const LoginPage = () => {
           }
         })
         const ruta = resAsesor.data.usuario.idUsuario
-        console.log(resAsesor.data.idAsesor)
         const ruta2 = resAsesor.data.idAsesor
         localStorage.setItem('id', ruta2)
         localStorage.setItem('idAsesor', ruta);
         localStorage.setItem('idNotificacion', ruta);
         localStorage.setItem('tipoUsuario', tipoUsuario)
-        console.log(ruta2);
         navigate(`/login/asesor/${ruta}`)
 
       } else if (tipoUsuario == "ADMIN") {

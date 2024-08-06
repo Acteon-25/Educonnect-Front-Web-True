@@ -28,7 +28,6 @@ function UsuarioCalificacionesPage() {
           comentario: el.comentario,
         }));
         setCalificaciones(nuevasCalis);
-        console.log(nuevasCalis);
       } catch (e) {
         console.log(e);
       }

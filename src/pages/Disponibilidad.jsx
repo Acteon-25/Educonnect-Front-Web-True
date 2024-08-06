@@ -5,7 +5,6 @@ import Sidebar from '../components/SideBarAsesor'
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
 
-
 function Disponibilidad() {
 
   const MySwal = withReactContent(Swal);
@@ -39,7 +38,6 @@ function Disponibilidad() {
           },
         }
       );
-
       setHorarios(response.data);
     };
 
@@ -58,7 +56,6 @@ function Disponibilidad() {
     };
     setHorarios(nuevo);
 
-    // Call the API to update horarios
     sendHorarios(nuevo);
   };
 
@@ -89,10 +86,10 @@ function Disponibilidad() {
 
   return (
     <div className="flex justify-center items-center min-h-screen bg-gray-100">
-    <Sidebar/>
+      <Sidebar />
       <form onSubmit={handleSubmit(onSubmit)} className="bg-white p-6 rounded-lg shadow-md w-full max-w-4xl">
         <h2 className="text-2xl font-bold mb-4 text-center">Modificar Horarios</h2>
-        
+
         <div className="grid grid-cols-3 gap-4 mb-2">
           <div></div>
           <div className="text-center font-semibold">Actual</div>
@@ -124,7 +121,6 @@ function Disponibilidad() {
             {errors[dia] && <p className="text-red-600 mt-2 text-sm col-span-3">{errors[dia].message}</p>}
           </div>
         ))}
-
         <button
           type="submit"
           className="bg-blue-500 text-white p-2 rounded w-full mt-4 hover:bg-blue-600"

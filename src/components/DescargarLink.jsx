@@ -9,7 +9,7 @@ function DescargarContenido({ contenidoId }) {
       .then(res => res.json())
       .then(data => setContenido(data))
       .catch(error => console.error('Error al obtener el contenido:', error));
-    
+
   }, [contenidoId]);
 
   if (!contenido) {

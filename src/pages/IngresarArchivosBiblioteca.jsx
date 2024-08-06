@@ -2,7 +2,6 @@ import { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
-
 function IngresarArchivosBiblioteca() {
   const navigate = useNavigate();
 
@@ -105,11 +104,6 @@ function IngresarArchivosBiblioteca() {
             <label className="block text-sm font-medium text-gray-700">
               Tipo:
             </label>
-            {/* <select onChange={subirTipo} value={tipo}>
-              <option value="libro">Libro</option>
-              <option value="imagen">Imagen</option>
-              <option value="video">Video</option>
-            </select> */}
             <input
               type="text"
               value={tipo}

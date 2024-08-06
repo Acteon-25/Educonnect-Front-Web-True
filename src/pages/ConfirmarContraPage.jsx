@@ -5,33 +5,26 @@ import SectionContainer from "../components/SectionContainer";
 import axios from "axios"
 import { useState } from "react";
 
-
 const ConfirmarContraPage = () => {
   const navigate = useNavigate()
   const tokenRestablecimiento = localStorage.getItem("token2")
-
   const [contrasena, setContrasena] = useState();
 
   async function change() {
     try {
-      const res = await axios.post(`https://educonnectb.onrender.com/restablecer-contrasena/${tokenRestablecimiento}`, {
+      await axios.post(`https://educonnectb.onrender.com/restablecer-contrasena/${tokenRestablecimiento}`, {
         nuevaContrasena: contrasena,
       })
-      console.log(res)
-      console.log(tokenRestablecimiento)
       navigate(`/login`)
     } catch (error) {
       console.log(error);
     }
-
   }
 
   const handleSubmit = (e) => {
     e.preventDefault();
     change()
   }
-
-
 
   return (
     <>
@@ -73,7 +66,6 @@ const ConfirmarContraPage = () => {
           </form>
         </div>
       </SectionContainer>
-
       <Footer />
     </>
   );

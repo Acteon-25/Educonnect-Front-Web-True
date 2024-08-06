@@ -23,10 +23,8 @@ const LoginUserAsesorPage = () => {
     })
       .then((res) => {
         setNombre(res.data.usuario.nombre);
-        console.log(res.data.usuario.nombre);
         const nombreActual = res.data.usuario.nombre;
         localStorage.setItem('nombreActual', nombreActual);
-        console.log(res.data);
       });
   };
 
@@ -60,7 +58,7 @@ const LoginUserAsesorPage = () => {
         <div className="flex flex-col gap-4">Asesorias</div>
         <div className="flex flex-col gap-4">Tareas</div>
 
-        <Sesiones userId={id} /> {/* Usar Sesiones */}
+        <Sesiones userId={id} />
       </div>
     </div>
   );

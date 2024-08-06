@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom"; // Si estás usando React Router para la navegación
+import { Link } from "react-router-dom";
 import FaFacebook from "../icons/FaFacebook.svg";
 import FaTwitter from "../icons/FaTwitter.svg";
 import FaInstagram from "../icons/FaInstagram.svg";
@@ -30,7 +30,7 @@ function Footer() {
             <h4 className="text-lg font-semibold mb-4">Planes</h4>
             <ul className="space-y-2 text-sm">
               <li>
-                <Link to="/">Basico</Link>
+                <Link to="/">Básico</Link>
               </li>
               <li>
                 <Link to="/">Premium</Link>

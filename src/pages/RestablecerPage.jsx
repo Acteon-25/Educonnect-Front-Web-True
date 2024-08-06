@@ -18,7 +18,6 @@ const RestablecerPage = () => {
         }
       })
       localStorage.setItem('token2', res.data.tokenRestablecimiento);
-      console.log(res.data.tokenRestablecimiento)
       navigate(`/confirmarContra`)
     } catch (err) {
       console.log(err);
@@ -70,7 +69,6 @@ const RestablecerPage = () => {
           </form>
         </div>
       </SectionContainer>
-
       <Footer />
     </>
   );

@@ -2,57 +2,45 @@ import Header from '../components/Header'
 import Footer from '../components/Footer'
 import { useParams, useNavigate } from "react-router-dom";
 import { useState } from 'react'
-
-
 import axios from 'axios'
 
 function Pasarela() {
-
   const navigate = useNavigate();
 
   const [numeroTarjeta, setNumeroTarjeta] = useState();
   const [fechaVencimiento, setFechaVencimiento] = useState();
   const [cvv, setCVV] = useState();
-
-
-
   const { plan, precio } = useParams();
 
-      async function comprarMembresia() {
+  async function comprarMembresia() {
 
-      const compra = {
-        tipoMembresia: plan,
-        tokenTemporal: localStorage.getItem('token'),
-        datosPago: {
-          "numeroTarjeta": numeroTarjeta,
-          "fechaVencimiento": fechaVencimiento,
-          "cvv": cvv,
-        }
-
-      }
-      console.log(compra);
-      try {
-        const response = await axios.post('https://educonnectb.onrender.com/membresias/comprar', compra)
-        console.log("Compra exitosa")
-        const token = response.data
-        localStorage.setItem('token', token)
-      } catch (e) {
-        console.error('Error al comprar la membresía:', e);
+    const compra = {
+      tipoMembresia: plan,
+      tokenTemporal: localStorage.getItem('token'),
+      datosPago: {
+        "numeroTarjeta": numeroTarjeta,
+        "fechaVencimiento": fechaVencimiento,
+        "cvv": cvv,
       }
     }
+    try {
+      const response = await axios.post('https://educonnectb.onrender.com/membresias/comprar', compra)
+      console.log("Compra exitosa")
+      const token = response.data
+      localStorage.setItem('token', token)
+    } catch (e) {
+      console.error('Error al comprar la membresía:', e);
+    }
+  }
 
-    const handleClick = (() => {
-      comprarMembresia()
-      navigate('/login')
-    })
+  const handleClick = (() => {
+    comprarMembresia()
+    navigate('/login')
+  })
 
-
-    return (
-
-      <>
-
+  return (
+    <>
       <Header />
-
       <div className="flex items-center justify-center min-h-screen bg-gray-100">
         <div className="grid md:grid-cols-2 gap-6 bg-white rounded-lg shadow-lg w-full max-w-4xl">
           <div className="px-6 py-8">
@@ -71,7 +59,7 @@ function Pasarela() {
                   type="text"
                   placeholder="1234 5678 9012 3456"
                   maxLength="16"
-                  onChange={(e) => setNumeroTarjeta(e.target.value)} 
+                  onChange={(e) => setNumeroTarjeta(e.target.value)}
                   className="w-full shadow-xl rounded-md px-3 py-2"
                 />
               </div>
@@ -81,13 +69,13 @@ function Pasarela() {
                     Fecha de expiración
                   </label>
                   <div className="flex gap-2">
-                  <input
-                    type="text"
-                    placeholder="MM / YY"
-                    onChange={(e) => setFechaVencimiento(e.target.value)} 
-                    maxLength="4"
-                    className="w-1/2 shadow-xl rounded-md px-3 py-2"
-                  />
+                    <input
+                      type="text"
+                      placeholder="MM / YY"
+                      onChange={(e) => setFechaVencimiento(e.target.value)}
+                      maxLength="4"
+                      className="w-1/2 shadow-xl rounded-md px-3 py-2"
+                    />
                   </div>
                 </div>
                 <div>
@@ -97,8 +85,7 @@ function Pasarela() {
                   <input
                     type="text"
                     maxLength="3"
-                    onChange={(e) => setCVV(e.target.value)} 
-                    
+                    onChange={(e) => setCVV(e.target.value)}
                     placeholder="123"
                     className="w-full border-gray-300 rounded-md px-3 py-2 shadow-lg"
                   />
@@ -140,29 +127,28 @@ function Pasarela() {
         </div>
       </div>
       <Footer />
-      </>
-    );
-  }
+    </>
+  );
+}
 
-  function CreditCardIcon(props) {
-    return (
-      <svg
-        {...props}
-        xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      >
-        <rect width="20" height="14" x="2" y="5" rx="2" />
-        <line x1="2" x2="22" y1="10" y2="10" />
-      </svg>
-    )
-  }
-  
-  export default Pasarela;
-  
+function CreditCardIcon(props) {
+  return (
+    <svg
+      {...props}
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <rect width="20" height="14" x="2" y="5" rx="2" />
+      <line x1="2" x2="22" y1="10" y2="10" />
+    </svg>
+  )
+}
+
+export default Pasarela;

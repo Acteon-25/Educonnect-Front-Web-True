@@ -19,9 +19,6 @@ const EnviarMensajeAsesor = () => {
       }
     })
       .then((res) => {
-        console.log(res.data)
-        console.log(res.data.usuario.correoElectronico)
-        console.log(res.data.usuario.nombre)
         setNombre(res.data.usuario.nombre)
       })
   }
@@ -34,7 +31,6 @@ const EnviarMensajeAsesor = () => {
       }
     })
       .then((res) => {
-        console.log(res.data)
         setAsesores(res.data)
       })
   }
@@ -42,10 +38,6 @@ const EnviarMensajeAsesor = () => {
   const handleSubmit = async () => {
     const token = localStorage.getItem('token');
     try {
-      console.log(nombre)
-      console.log(toUser)
-      console.log(subject)
-      console.log(body) 
       const response = await fetch('https://educonnectb.onrender.com/email/send', {
         method: 'POST',
         headers: {
@@ -72,7 +64,6 @@ const EnviarMensajeAsesor = () => {
 
   const handleChange = (event) => {
     const NombreAsesor = event.target.value;
-    console.log(NombreAsesor)
     setToUser(NombreAsesor);
   };
 
@@ -108,7 +99,7 @@ const EnviarMensajeAsesor = () => {
               className="mt-1 p-3 block w-full rounded-md border border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
             >
               <option value="">Selecciona un asesor</option>
-             
+
               {asesores.map((asesor) => (
                 <option key={asesor.idUsuario} value={asesor.nombre}>
                   {asesor.nombre}

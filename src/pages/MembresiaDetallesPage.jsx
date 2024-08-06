@@ -4,9 +4,7 @@ import SideBar from "../components/SideBar";
 import { useNavigate } from 'react-router-dom';
 
 function MembresiaDetallesPage() {
-
   const navigate = useNavigate()
-
 
   const handleClickDelete = () => {
     const token = localStorage.getItem('token');
@@ -17,15 +15,12 @@ function MembresiaDetallesPage() {
     })
     alert("Membresia cancelada con exito")
     navigate(-1)
-
   }
 
   const [urlPdf, setUrlPdf] = useState(null);
   const [detalles, setDetalles] = useState(null);
 
-
   const calcularProximaFechaFacturacion = (fecha) => {
-    // Crear una copia de la fecha para evitar modificar el objeto original
     const fechaProximaFacturacion = new Date(fecha);
     fechaProximaFacturacion.setDate(fechaProximaFacturacion.getDate() + 1);
     const options = { year: 'numeric', month: 'long', day: 'numeric' };
@@ -50,15 +45,12 @@ function MembresiaDetallesPage() {
         const pdfBlob = response.data;
         const url = URL.createObjectURL(pdfBlob);
         setUrlPdf(url);
-
       } catch (error) {
         console.log(error);
       }
     }
 
     obtenerURL()
-
-
 
     const getDetalles = async () => {
       try {

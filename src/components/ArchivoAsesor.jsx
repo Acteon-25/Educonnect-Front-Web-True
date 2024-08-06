@@ -3,14 +3,10 @@ import axios from 'axios'
 
 // eslint-disable-next-line react/prop-types
 function ArchivoAsesor({ archivo }) {
-  console.log(archivo);
-
-
-    const [url, setUrl] = useState(null);
+  const [url, setUrl] = useState(null);
 
   useEffect(() => {
     const token = localStorage.getItem('token');
-
     const obtenerURL = async () => {
       try {
         const response = await axios.get(
@@ -22,7 +18,6 @@ function ArchivoAsesor({ archivo }) {
             responseType: 'blob',
           }
         );
-
         const pdfBlob = response.data;
         const url = URL.createObjectURL(pdfBlob);
         setUrl(url);
@@ -31,7 +26,6 @@ function ArchivoAsesor({ archivo }) {
         console.log(error);
       }
     }
-
     obtenerURL()
   }, []);
 

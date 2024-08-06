@@ -1,18 +1,11 @@
-// import axios from 'axios'
 import { useNavigate } from 'react-router-dom';
 
 const PricingCard = ({ plan, precio, caracteristicas, highlighted = false, value }) => {
-
-
-
-
   const navigate = useNavigate();
-
 
   const handleClick = (() => {
     navigate(`/pasarela-pago/${value}/${precio}`)
   })
-
 
   return (
     <div

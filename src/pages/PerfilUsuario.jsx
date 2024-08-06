@@ -1,10 +1,8 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
 import SideBar from '../components/SideBar';
 
 function PerfilUsuario() {
-  const navigate = useNavigate();
   const [usuario, setUsuario] = useState(null);
   const [error, setError] = useState(null);
   const [editando, setEditando] = useState(false);
@@ -15,8 +13,6 @@ function PerfilUsuario() {
     estado: '',
   });
 
-
-
   useEffect(() => {
     const obtenerDatosUsuario = async () => {
       try {
@@ -24,13 +20,11 @@ function PerfilUsuario() {
         if (!token) {
           throw new Error('No hay token disponible');
         }
-
         const response = await axios.get('https://educonnectb.onrender.com/estudiantes/perfil', {
           headers: {
             Authorization: `Bearer ${token}`
           }
         });
-
         setUsuario(response.data);
         setFormData(response.data);
       } catch (error) {
@@ -64,7 +58,6 @@ function PerfilUsuario() {
       console.error('Error al actualizar el perfil:', error);
       setError('No se pudo actualizar el perfil.');
     }
-    console.log(formData);
     alert('Datos cambiados exitosamente exitoso')
   };
 

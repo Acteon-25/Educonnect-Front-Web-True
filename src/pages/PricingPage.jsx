@@ -2,12 +2,10 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import PricingCard from "../components/PricingCard";
 
-
 const PricingPage = () => {
   return (
-<>
+    <>
       <Header />
-
       <section className="bg-gray-100 py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
@@ -19,10 +17,7 @@ const PricingPage = () => {
               aprendizaje.
             </p>
           </div>
-
-          {/* Tarjetas de Planes */}
           <div className="mt-10 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-            {/* Tarjeta Plan Básico */}
             <PricingCard
               plan="Básico"
               precio="49.99"
@@ -35,10 +30,7 @@ const PricingPage = () => {
                 "Elección de Asesores",
               ]}
               value="ESTUDIANTE_ESTANDAR"
-
             />
-
-            {/* Tarjeta Plan Premium */}
             <PricingCard
               plan="Premium"
               precio="79.99"
@@ -48,13 +40,9 @@ const PricingPage = () => {
                 "Acceso a reportes de notas y comentarios del alumno",
                 "Elección de Asesores",
               ]}
-              highlighted 
+              highlighted
               value="ESTUDIANTE_PRO"
-
-
             />
-
-            {/* Tarjeta Plan Super ArchiMegaPremium */}
             <PricingCard
               plan="Grupal Premium"
               precio="119.99"
@@ -64,12 +52,10 @@ const PricingPage = () => {
                 "Acceso ilimitado a la biblioteca virtual",
               ]}
               value="ESTUDIANTE_PRO"
-
             />
           </div>
         </div>
       </section>
-
       <Footer />
     </>
   );

@@ -1,13 +1,11 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import SideBar from '../components/SideBarAsesor'
-import { useNavigate, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 function PerfilAsesor() {
-  const navigate = useNavigate();
   const [usuario, setUsuario] = useState(null);
   const [error, setError] = useState(null);
-  // const [editando, setEditando] = useState(false);
   const [formData, setFormData] = useState({})
 
   const handleClickDelete = () => {
@@ -16,7 +14,6 @@ function PerfilAsesor() {
         'Authorization': `Bearer ${tokenCancelar}`
       }
     })
-    console.log(tokenCancelar)
     alert("Membresia cancelada con exito")
   }
 
@@ -33,7 +30,6 @@ function PerfilAsesor() {
             Authorization: `Bearer ${token}`
           }
         });
-
         setUsuario(response.data);
         setFormData({
           especialidad: response.data.especialidad,
@@ -55,7 +51,6 @@ function PerfilAsesor() {
     });
   };
 
-
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
@@ -64,15 +59,13 @@ function PerfilAsesor() {
         headers: {
           Authorization: `Bearer ${token}`
         }
-      }); 
-
+      });
       alert("Se guardaron los cambios con exito")
-     
+
     } catch (error) {
       console.error('Error al actualizar el perfil:', error);
       setError('No se pudo actualizar el perfil.');
     }
-
   };
 
   if (error) {
@@ -95,7 +88,7 @@ function PerfilAsesor() {
             </label>
             <input
               type="text"
-              disabled= {true}
+              disabled={true}
               name="nombre"
               value={usuario.usuario.nombre || ''}
               onChange={handleChange}
@@ -110,7 +103,7 @@ function PerfilAsesor() {
               type="email"
               name="correoElectronico"
               value={usuario.usuario.correoElectronico || ''}
-              disabled= {true}
+              disabled={true}
               onChange={handleChange}
               className="p-3 rounded-md border border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
             />
@@ -122,8 +115,8 @@ function PerfilAsesor() {
             <input
               type="text"
               name="tipoUsuario"
-              value={usuario.usuario.tipoUsuario|| ''}
-              disabled= {true}
+              value={usuario.usuario.tipoUsuario || ''}
+              disabled={true}
               onChange={handleChange}
               className="p-3 rounded-md border border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
             />
@@ -137,7 +130,7 @@ function PerfilAsesor() {
               name="estado"
               value={usuario.usuario.estado || ''}
               onChange={handleChange}
-              disabled= {true}
+              disabled={true}
               className="p-3 rounded-md border border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
             />
           </div>

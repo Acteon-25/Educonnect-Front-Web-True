@@ -7,7 +7,7 @@ import axios from "axios";
 import { useNavigate } from 'react-router-dom';
 import Notifications from '../components/Notifications';
 import Fondo from '../img/FondoHector.png';
-import Sesiones from '../components/Sesiones'; // Importar el componente Sesiones
+import Sesiones from '../components/Sesiones'; 
 
 const token = localStorage.getItem("token");
 const id = localStorage.getItem('id');
@@ -64,7 +64,7 @@ const LoginUserPage = () => {
           Tareas
         </div>
 
-        <Sesiones userId={id} /> {/* Usar Sesiones */}
+        <Sesiones userId={id} />
       </div>
     </div>
   );

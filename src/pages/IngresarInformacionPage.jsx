@@ -1,7 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import SideBar from "../components/SideBarAsesor";
-import {useEffect} from 'react'
+import { useEffect } from 'react'
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
 
@@ -16,7 +16,7 @@ function IngresarInformacionPage() {
 
   useEffect(() => {
     const fetchUsuarios = async () => {
-    const token = localStorage.getItem('token');
+      const token = localStorage.getItem('token');
       try {
         const response = await axios.get('https://educonnectb.onrender.com/asesores/estudiantes',
           {
@@ -24,9 +24,7 @@ function IngresarInformacionPage() {
               Authorization: `Bearer ${token}`,
             },
           }
-          
         );
-        console.log(response.data);
         setUsuarios(response.data);
       } catch (error) {
         console.error('Error al obtener los asesores:', error);
@@ -38,11 +36,11 @@ function IngresarInformacionPage() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    setError(null); 
+    setError(null);
 
     try {
       const token = localStorage.getItem("token");
-      const estudianteId = estudiante; 
+      const estudianteId = estudiante;
       const response = await axios.post(
         `https://educonnectb.onrender.com/asesores/estudiantes/${estudianteId}/informes`,
         { contenido: informe },
@@ -52,7 +50,6 @@ function IngresarInformacionPage() {
           },
         }
       );
-
       console.log("Informe enviado:", response.data);
       setMensaje("Informe enviado con éxito");
       setEstudiante('');
@@ -63,7 +60,7 @@ function IngresarInformacionPage() {
         icon: 'success',
         confirmButtonText: 'Aceptar',
       });
-      
+
     } catch (error) {
       console.error("Error al enviar el Informe:", error);
       setError(
@@ -74,7 +71,6 @@ function IngresarInformacionPage() {
   const handleEstudianteChange = (event) => {
     const selectedNombre = event.target.value;
     const selectedEstudiante = usuarios.find(usuario => usuario.nombre === selectedNombre);
-    console.log(selectedEstudiante.idUsuario);
     setEstudiante(selectedEstudiante.idUsuario);
   };
 
@@ -91,7 +87,7 @@ function IngresarInformacionPage() {
           <form className="space-y-4" onSubmit={handleSubmit}>
             <datalist id="usuarios">
               {usuarios.map((usuario) => (
-                <option key={usuario.idUsuario} value={usuario.nombre}/>
+                <option key={usuario.idUsuario} value={usuario.nombre} />
               ))}
             </datalist>
             <div>
