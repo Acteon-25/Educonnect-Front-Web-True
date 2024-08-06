@@ -16,13 +16,13 @@ const Sesiones = ({ userId }) => {
       try {
         let response = null;
         if (tipoUsuario === 'ESTUDIANTE') {
-          response = await axios.get(`http://localhost:8080/estudiantes/${userId}/sesiones`, {
+          response = await axios.get(`https://educonnectb.onrender.com/estudiantes/${userId}/sesiones`, {
             headers: {
               Authorization: `Bearer ${token}`,
             },
           });
         } else if (tipoUsuario === 'ASESOR') {
-          response = await axios.get(`http://localhost:8080/asesores/${userId}/sesiones`, {
+          response = await axios.get(`https://educonnectb.onrender.com/asesores/${userId}/sesiones`, {
             headers: {
               Authorization: `Bearer ${token}`,
             },
@@ -70,13 +70,13 @@ const Sesiones = ({ userId }) => {
   const handleDelete = async (idSesion) => {
     try {
       if (tipoUsuario === 'ESTUDIANTE') {
-        await axios.delete(`http://localhost:8080/estudiantes/${idSesion}`, {
+        await axios.delete(`https://educonnectb.onrender.com/estudiantes/${idSesion}`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
         });
       } else if (tipoUsuario === 'ASESOR') {
-        await axios.delete(`http://localhost:8080/asesores/${idSesion}`, {
+        await axios.delete(`https://educonnectb.onrender.com/asesores/${idSesion}`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
