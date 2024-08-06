@@ -1,11 +1,21 @@
+import * as React from 'react';
 import { useState } from "react";
 import axios from "axios";
 import SideBar from "../components/SideBarAsesor";
 import { useEffect } from 'react'
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
+import dayjs from 'dayjs';
+import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+
+
 
 function IngresarInformacionPage() {
+  const [value, setValue] = React.useState(dayjs(''));
+  const [value2, setValue2] = React.useState(dayjs(''));
   const [informe, setInforme] = useState("");
   const [mensaje, setMensaje] = useState(null);
   const [error, setError] = useState(null);
@@ -42,7 +52,7 @@ function IngresarInformacionPage() {
       const token = localStorage.getItem("token");
       const estudianteId = estudiante;
       const response = await axios.post(
-        `https://educonnectb.onrender.com/asesores/estudiantes/${estudianteId}/informes`,
+        `https://educonnectb.onrender.com/asesores/estudiantes/${estudianteId}/informes?fechaInicio=${value.$y}-${value.$M}-${value.$D}&fechaFin=${value2.$y}-${value2.$M}-${value2.$D}`,
         { contenido: informe },
         {
           headers: {
@@ -118,6 +128,28 @@ function IngresarInformacionPage() {
                 onChange={(e) => setInforme(e.target.value)}
                 className="mt-1 p-2 block w-full rounded-md border border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
               />
+            </div>
+            <div>
+              <label
+                htmlFor="Fecha"
+                className="block text-sm font-medium text-gray-700"
+              >
+                Fecha:
+              </label>
+              <LocalizationProvider dateAdapter={AdapterDayjs}>
+                <DemoContainer components={['DatePicker', 'DatePicker']}>
+                  <DatePicker
+                    label="Fecha Inicio"
+                    value={value}
+                    onChange={(newValue) => setValue(newValue)}
+                  />
+                  <DatePicker
+                    label="Fecha Fin"
+                    value={value2}
+                    onChange={(newValue) => setValue2(newValue)}
+                  />
+                </DemoContainer>
+              </LocalizationProvider>
             </div>
 
             <button

@@ -9,7 +9,7 @@ const RestablecerPage = () => {
   const navigate = useNavigate()
 
   const [email, setEmail] = useState();
-
+ 
   async function change() {
     try {
       const res = await axios.post(`https://educonnectb.onrender.com/restablecer-contrasena?correoElectronico=${email}`, {
