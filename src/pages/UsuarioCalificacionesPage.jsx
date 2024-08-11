@@ -8,7 +8,7 @@ function UsuarioCalificacionesPage() {
   useEffect(() => {
     const id = localStorage.getItem('id');
     const token = localStorage.getItem('token');
-
+    
     const getCalificaciones = async () => {
       try {
         const response = await axios.get(
