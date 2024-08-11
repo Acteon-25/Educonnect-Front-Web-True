@@ -70,7 +70,7 @@ function AsesorDetailsPage() {
   }
 
   return (
-    <div className="flex flex-col items-center justify-center h-screen bg-gray-100  p-4 md:p-8">
+    <div className="flex flex-col items-center justify-center h-screen bg-gray-100 p-4 md:p-8">
       <div className="max-w-md w-full space-y-8">
         <div className="bg-white rounded-lg shadow-lg p-6 space-y-6">
           <div className="flex flex-col items-center space-y-4">
@@ -145,7 +145,6 @@ function AsesorDetailsPage() {
               </div>
             </div>
           </div>
-
           <div className="flex justify-center space-x-4">
             <button
               onClick={handleAceptar}

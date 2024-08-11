@@ -29,6 +29,7 @@ function SesionList() {
     <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8  ">
       <div className="sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 ">
         {asesores.map((asesor) => {
+          console.log(asesor.idSesion)
           return (
             <div key={asesor.idSesion} className="flex items-start gap-4 shadow-lg  p-4">
               <img

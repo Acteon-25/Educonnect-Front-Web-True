@@ -53,17 +53,14 @@ function IngresarArchivosBiblioteca() {
 
 
   return (
-    <div className='flex flex-col items-center justify-center py-5'>
-      <div className='bg-orange-400 rounded-xl py-1 px-3 text-xl text-white text-center'>
+    <div className='flex flex-col items-center justify-center py-8'>
+      <div className='bg-violet-500 rounded-xl py-2 px-4 text-xl text-white text-center mb-6 font-semibold'>
         <button onClick={() => navigate(-1)}>Retroceder</button>
       </div>
-
-      <div className="container mx-auto p-4">
-        <h1 className="text-2xl font-bold mb-4">Ingresar Archivos a la Biblioteca</h1>
-
+      <div className="container mx-auto p-6 bg-white rounded-lg shadow-lg w-full max-w-md">
+        <h1 className="text-2xl font-bold mb-6 text-indigo-600 text-center">Ingresar Archivos a la Biblioteca</h1>
         {mensaje && <p className="text-green-500 mb-4">{mensaje}</p>}
         {error && <p className="text-red-500 mb-4">{error}</p>}
-
         <form className="space-y-4" onSubmit={handleSubmit}>
           <div>
             <label className="block text-sm font-medium text-gray-700">
@@ -87,7 +84,6 @@ function IngresarArchivosBiblioteca() {
               className="mt-1 p-2 block w-full rounded-md border border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
             />
           </div>
-
           <div>
             <label className="block text-sm font-medium text-gray-700">
               Autor:
@@ -99,11 +95,15 @@ function IngresarArchivosBiblioteca() {
               className="mt-1 p-2 block w-full rounded-md border border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
             />
           </div>
-
           <div>
             <label className="block text-sm font-medium text-gray-700">
               Tipo:
             </label>
+            {/* <select onChange={subirTipo} value={tipo}>
+              <option value="libro">Libro</option>
+              <option value="imagen">Imagen</option>
+              <option value="video">Video</option>
+            </select> */}
             <input
               type="text"
               value={tipo}
@@ -111,36 +111,46 @@ function IngresarArchivosBiblioteca() {
               className="mt-1 p-2 block w-full rounded-md border border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
             />
           </div>
-
-          <div>
-            <label className="block text-sm font-medium text-gray-700">
+          <div className="relative">
+            <label className="block text-sm font-semibold text-gray-700 mb-2">
               Caratula:
             </label>
             <input
               type="file"
+              id="caratula"
               onChange={subirCaratula}
-              className="mt-1 p-2 block w-full rounded-md border border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+              className="hidden"
             />
+            <label
+              htmlFor="caratula"
+              className="w-full flex items-center justify-center px-4 py-2 border border-gray-300 rounded-md shadow-md text-gray-700 bg-gray-200 cursor-pointer hover:bg-gray-300 transition duration-300"
+            >
+              Seleccionar Caratula
+            </label>
           </div>
-
-          <div>
-            <label className="block text-sm font-medium text-gray-700">
+          <div className="relative">
+            <label className="block text-sm font-semibold text-gray-700 mb-2">
               Contenido:
             </label>
             <input
               type="file"
+              id="contenido"
               onChange={subirContenido}
-              className="mt-1 p-2 block w-full rounded-md border border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+              className="hidden"
             />
+            <label
+              htmlFor="contenido"
+              className="w-full flex items-center justify-center px-4 py-2 border border-gray-300 rounded-md shadow-md text-gray-700 bg-gray-200 cursor-pointer hover:bg-gray-300 transition duration-300"
+            >
+              Seleccionar Contenido
+            </label>
           </div>
-
-          <button type="submit" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+          <button type="submit" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg w-full transition duration-300">
             Enviar Archivo
           </button>
         </form>
       </div>
     </div>
-
   );
 }
 

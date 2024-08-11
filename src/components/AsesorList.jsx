@@ -27,19 +27,19 @@ function AsesorList() {
       <div className="sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 ">
         {asesores.map((asesor) => (
           <div key={asesor.idAsesor} className="flex items-start gap-4 shadow-lg  p-4">
-            <img
-              src={Avatar}
+            <img 
+              src={Avatar} 
               alt={`${asesor.usuario.nombre} avatar`}
-              className="h-12 w-12 rounded-full"
+              className="h-12 w-12 rounded-full" 
             />
             <div className="grid gap-1">
               <div className="font-medium">{asesor.usuario.nombre}</div>
               <div className="text-sm text-gray-500">{asesor.usuario.correoElectronico}</div>
               <div className="text-sm  text-gray-500 line-clamp-2">
-                {asesor.especialidad || 'Sin Materia'}
+                {asesor.especialidad || 'Sin Materia'} 
               </div>
               <div className="text-sm  text-gray-500 line-clamp-2">
-                {asesor.usuario.estado || 'SIn estado'}
+                {asesor.usuario.estado || 'SIn estado'} 
               </div>
               <Link
                 to={`/admin/asesores/${asesor.idAsesor}`}
@@ -47,8 +47,8 @@ function AsesorList() {
               >
                 Ver Detalles
                 <svg
-                  className="h-4 w-4"
-                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-4 w-4" 
+                  xmlns="http://www.w3.org/2000/svg" 
                   width="24"
                   height="24"
                   viewBox="0 0 24 24"

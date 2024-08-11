@@ -73,13 +73,13 @@ const EnviarMensajeAsesor = () => {
   }, []);
 
   return (
-    <div className="pt-14">
+    <div className="pt-14 flex justify-center items-start min-h-screen">
       <SideBar />
-      <SectionContainer>
+      <SectionContainer className="flex-1 max-w-2xl w-full mx-auto px-4 sm:px-6 py-20">
         <form onSubmit={handleSubmit} className="bg-white rounded-lg shadow-lg p-6 space-y-6">
           <div className="flex flex-col">
             <label htmlFor="nombre" className="mb-1 text-sm font-medium text-gray-700">
-              fromUser:
+              Usuario:
             </label>
             <input
               type="text"
@@ -90,7 +90,7 @@ const EnviarMensajeAsesor = () => {
           </div>
           <div className="flex flex-col">
             <label htmlFor="correoElectronico" className="mb-1 text-sm font-medium text-gray-700">
-              toUser:
+              Destino:
             </label>
             <select
               id="asesores"
@@ -109,7 +109,7 @@ const EnviarMensajeAsesor = () => {
           </div>
           <div className="flex flex-col">
             <label htmlFor="tipoUsuario" className="mb-1 text-sm font-medium text-gray-700">
-              subject:
+              Asunto:
             </label>
             <input
               type="text"
@@ -120,7 +120,7 @@ const EnviarMensajeAsesor = () => {
           </div>
           <div className="flex flex-col">
             <label htmlFor="estado" className="mb-1 text-sm font-medium text-gray-700">
-              body:
+              Mensaje:
             </label>
             <input
               type="text"
@@ -129,7 +129,6 @@ const EnviarMensajeAsesor = () => {
               className="p-3 rounded-md border border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
             />
           </div>
-
           <button
             type="submit"
             className="w-full bg-indigo-600 text-white p-3 rounded-md shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
@@ -139,7 +138,6 @@ const EnviarMensajeAsesor = () => {
         </form>
       </SectionContainer>
     </div>
-
   );
 };
 

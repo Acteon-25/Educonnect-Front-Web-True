@@ -7,7 +7,6 @@ import PricingPage from "./pages/PricingPage"
 import ErrorPage from "./pages/ErrorPage"
 import BibliotecaPage from "./pages/BibliotecaPage"
 import DashboardPage from "./pages/DashboardPage"
-import EditProfilePage from "./pages/EditProfile"
 import NosotrosPage from './pages/NosotrosPage'
 import RestablecerPage from './pages/RestablecerPage'
 import RegisterAsesorPage from './pages/RegisterAsesorPage'
@@ -50,7 +49,6 @@ function App() {
           <Route path="/biblioteca" element={<BibliotecaPage />} />
           <Route path="/administrarAsesores" element={<AdministrarAsesoresPage />} />
           <Route path="/administracionUsuarios" element={<AdministracionUsuariosPage />} />
-          <Route path="/editProfile" element={<EditProfilePage />} />
           <Route path="/dashboard" element={<DashboardPage />} />
           <Route path="/confirmarContra" element={<ConfirmarContraPage />} />
           <Route path="*" element={<ErrorPage />} />

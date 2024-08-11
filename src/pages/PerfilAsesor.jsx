@@ -88,7 +88,7 @@ function PerfilAsesor() {
             </label>
             <input
               type="text"
-              disabled={true}
+              disabled= {true}
               name="nombre"
               value={usuario.usuario.nombre || ''}
               onChange={handleChange}
@@ -103,7 +103,7 @@ function PerfilAsesor() {
               type="email"
               name="correoElectronico"
               value={usuario.usuario.correoElectronico || ''}
-              disabled={true}
+              disabled= {true}
               onChange={handleChange}
               className="p-3 rounded-md border border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
             />
@@ -115,8 +115,8 @@ function PerfilAsesor() {
             <input
               type="text"
               name="tipoUsuario"
-              value={usuario.usuario.tipoUsuario || ''}
-              disabled={true}
+              value={usuario.usuario.tipoUsuario|| ''}
+              disabled= {true}
               onChange={handleChange}
               className="p-3 rounded-md border border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
             />
@@ -130,7 +130,7 @@ function PerfilAsesor() {
               name="estado"
               value={usuario.usuario.estado || ''}
               onChange={handleChange}
-              disabled={true}
+              disabled= {true}
               className="p-3 rounded-md border border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
             />
           </div>

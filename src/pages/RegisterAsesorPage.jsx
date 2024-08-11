@@ -53,12 +53,14 @@ const RegisterAsesorPage = () => {
   return (
     <>
       <Header />
-      <SectionContainer className="grid sm:grid-cols-2  sm:py-16 p-5 lg:w-auto gap-4 place-items-center sm:my-32 md:place-items-center md:my-24 xl:my-0">
-        <img src={Profesor} alt="" className="rounded-xl aspect-square sm:w-[300px] md:w-[380px] xl:w-[550px] " />
+      <SectionContainer className="grid p-5 gap-4 place-items-center
+        sm:grid-cols-2 sm:py-12 sm:my-32
+        md:place-items-center md:my-24">
+        <img src={Profesor} alt="" className="rounded-xl shadow-lg w-full max-w-xs sm:max-w-md md:max-w-lg lg:max-w-xl" />
         <div className="">
-          <h2>Bienvenido</h2>
-          <div className="border bg-sky-400 rounded-full py-3 px-4 grid grid-cols-2">
-            <button className="rounded-full text-white py-2" onClick={() => {
+          <h2 className="text-3xl font-bold text-center text-gray-800 py-2">Bienvenido</h2>
+          <div className="border bg-sky-400 rounded-full py-2 px-4 grid grid-cols-2 gap-4">
+            <button className="rounded-full text-white py-2 hover:bg-sky-600 transition duration-300" onClick={() => {
               navigate("/registerAlumno");
             }}>
               Registro de Alumno
@@ -69,38 +71,62 @@ const RegisterAsesorPage = () => {
               Registro de Asesor
             </button>
           </div>
-
+          <p className="py-2">Ingrese sus datos para registrarse como asesor en EduConnect</p>
           <form onSubmit={handleSubmit}>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam, iusto.</p>
-            <h3>Correo Electronico: </h3>
-            <input type="email" name="" id="" placeholder="Ingrese su email" className="border border-sky-500 rounded-full px-4 py-1"
-              required
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-            <h3>Nombres</h3>
-            <input type="text" placeholder="Ingrese su username" className="border border-sky-500 rounded-full px-4 py-1"
-              required
-              value={nombre}
-              onChange={(e) => setNombre(e.target.value)} />
-            <h3>Contraseña</h3>
-            <input type="password" placeholder="Ingrese su contraseña" className="border border-sky-500 rounded-full px-4 py-1"
-              value={contrasena}
-              onChange={(e) => setContrasena(e.target.value)} />
-            <h3>Especialidad</h3>
-            <input type="text" placeholder="Ingrese la especialidad" className="border border-sky-500 rounded-full px-4 py-1"
-              value={especialidad}
-              onChange={(e) => setEspecialidad(e.target.value)}
-            />
-            <h3>Ingreso de archivos</h3>
-            <input
-              onChange={(e) => setFile(e.target.files[0])}
-              type="file" placeholder="Ingrese su contraseña" className="border border-sky-500 rounded-full px-4 py-1"
-            />
-            <button className="bg-sky-500 rounded-full text-white px-6 py-1 block my-4 ">
-              Registrate
-            </button>
+            <div className="flex flex-col space-y-4">
+              <label htmlFor="email" className="text-gray-700">Correo Electrónico:</label>
+              <input
+                type="email"
+                placeholder="Ingrese su Correo Electrónico"
+                className="border border-sky-500 rounded-full px-4 py-1"
+                required
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+            </div>
+            <div className="flex flex-col space-y-1">
+              <label htmlFor="nombre" className="text-gray-700">Nombre:</label>
+              <input type="text" placeholder="Ingrese su username" className="border border-sky-500 rounded-full px-4 py-1"
+                required
+                value={nombre}
+                onChange={(e) => setNombre(e.target.value)} />
+            </div>
+            <div className="flex flex-col space-y-1">
+              <label htmlFor="contrasena" className="text-gray-700">Contraseña:</label>
+              <input type="password" placeholder="Ingrese su contraseña" className="border border-sky-500 rounded-full px-4 py-1"
+                value={contrasena}
+                onChange={(e) => setContrasena(e.target.value)} />
+            </div>
+            <div className="flex flex-col space-y-1">
+              <label htmlFor="especialidad" className="text-gray-700">Especialidad:</label>
+              <input type="text" placeholder="Ingrese la especialidad" className="border border-sky-500 rounded-full px-4 py-1"
+                value={especialidad}
+                onChange={(e) => setEspecialidad(e.target.value)}
+              />
+            </div>
+            <div className="flex flex-col space-y-1">
+              <label htmlFor="Ingreso de archivos" className="text-gray-700">Ingreso de archivos:</label>
+              <input
+                type="file"
+                id="contenido"
+                placeholder="Ingrese sus archivos"
+                onChange={subirContenido}
+                className="hidden"
+              />
+              <label
+                htmlFor="contenido"
+                className="w-full flex items-center justify-center px-4 py-2 border border-gray-300 rounded-md shadow-md text-gray-700 bg-gray-200 cursor-pointer hover:bg-gray-300 transition duration-300"
+              >
+                Seleccionar Contenido
+              </label>
+            </div>
+            <div className="border rounded-full py-3 px-4 grid grid-cols-1">
+              <button className="bg-sky-500 hover:bg-blue-700 w-full transition duration-300 rounded-full text-white px-6 py-2 block my-4" >
+                Regístrate
+              </button>
+            </div>
           </form>
+
         </div>
       </SectionContainer>
       <Footer />

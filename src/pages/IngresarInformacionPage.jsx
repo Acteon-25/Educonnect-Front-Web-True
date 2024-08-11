@@ -88,16 +88,16 @@ function IngresarInformacionPage() {
     <div className="flex">
       <SideBar />
       <div className="flex flex-col items-center justify-center w-full min-h-screen bg-gray-100 p-4">
-        <div className="bg-white shadow-md rounded-lg p-6 w-full max-w-md">
-          <h1 className="text-2xl font-bold mb-4 text-center">Informe del Estudiante</h1>
+        <div className="bg-white shadow-md rounded-lg p-6 w-full max-w-lg">
+          <h1 className="text-3xl font-bold mb-4 text-center text-indigo-600">Informe del Estudiante</h1>
 
           {mensaje && <p className="text-green-500 mb-4 text-center">{mensaje}</p>}
           {error && <p className="text-red-500 mb-4 text-center">{error}</p>}
 
           <form className="space-y-4" onSubmit={handleSubmit}>
             <datalist id="usuarios">
-              {usuarios.map((usuario) => (
-                <option key={usuario.idUsuario} value={usuario.nombre} />
+              {usuarios.filter(usuario => usuario.estado === 'ACTIVO').map((usuario) => (
+                <option key={usuario.idUsuario} value={usuario.nombre}>{usuario.nombre}</option>
               ))}
             </datalist>
             <div>

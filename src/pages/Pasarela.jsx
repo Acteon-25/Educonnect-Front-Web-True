@@ -41,13 +41,13 @@ function Pasarela() {
   return (
     <>
       <Header />
-      <div className="flex items-center justify-center min-h-screen bg-gray-100">
+      <div className="flex items-center justify-center my-44 bg-gray-100">
         <div className="grid md:grid-cols-2 gap-6 bg-white rounded-lg shadow-lg w-full max-w-4xl">
           <div className="px-6 py-8">
             <div className="flex items-center justify-between mb-6">
               <div className="flex items-center gap-2">
-                <CreditCardIcon className="w-6 h-6 text-primary" />
-                <h2 className="text-lg font-semibold">Pasarela de pagos</h2>
+                <CreditCardIcon className="w-8 h-8 text-sky-500" />
+                <h2 className="text-2xl font-bold text-indigo-600">Pasarela de pagos</h2>
               </div>
             </div>
             <form className="space-y-4">
@@ -60,7 +60,7 @@ function Pasarela() {
                   placeholder="1234 5678 9012 3456"
                   maxLength="16"
                   onChange={(e) => setNumeroTarjeta(e.target.value)}
-                  className="w-full shadow-xl rounded-md px-3 py-2"
+                  className="w-full px-4 py-3 bg-gray-100 border border-gray-300 rounded-lg  shadow-xl focus:border-sky-500 focus:ring focus:ring-sky-200 focus:ring-opacity-50 focus:outline-none"
                 />
               </div>
               <div className="grid grid-cols-2 gap-4">
@@ -74,7 +74,7 @@ function Pasarela() {
                       placeholder="MM / YY"
                       onChange={(e) => setFechaVencimiento(e.target.value)}
                       maxLength="4"
-                      className="w-1/2 shadow-xl rounded-md px-3 py-2"
+                      className="w-1/2 bg-gray-100 border border-gray-300 rounded-lg  shadow-xl focus:border-sky-500 focus:ring focus:ring-sky-200 focus:ring-opacity-50 focus:outline-none px-3 py-2"
                     />
                   </div>
                 </div>
@@ -87,7 +87,7 @@ function Pasarela() {
                     maxLength="3"
                     onChange={(e) => setCVV(e.target.value)}
                     placeholder="123"
-                    className="w-full border-gray-300 rounded-md px-3 py-2 shadow-lg"
+                    className="w-1/2 bg-gray-100 border border-gray-300 rounded-lg  shadow-xl focus:border-sky-500 focus:ring focus:ring-sky-200 focus:ring-opacity-50 focus:outline-none px-3 py-2"
                   />
                 </div>
               </div>
@@ -102,7 +102,7 @@ function Pasarela() {
           </div>
           <div className="bg-gray-100 rounded-r-lg px-6 py-8 flex flex-col gap-6 pt-18">
             <div>
-              <h3 className="text-lg font-semibold mb-2">Resumen de la compra</h3>
+              <h3 className="text-xl font-semibold mb-4 text-indigo-600">Resumen de la compra</h3>
               <div className="flex items-center justify-between">
                 <span className="text-gray-600">Plan</span>
                 <span>{plan}</span>

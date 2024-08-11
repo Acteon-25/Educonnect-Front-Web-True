@@ -94,13 +94,12 @@ function CalificarEstudiante() {
                 Estudiante:
               </label>
               <select
-                {...register('estudiante', {
+                {...register('estudiante', { 
                   required: 'Campo Requerido',
                   maxLength: {
                     value: 20,
                     message: 'Máximo caracteres 20'
-                  }
-                })}
+                  }})}
                 className="mt-1 block w-full p-3 rounded-md border border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
               >
                 <option value="">-- Selecciona Estudiante --</option>
@@ -118,13 +117,12 @@ function CalificarEstudiante() {
                 Materia:
               </label>
               <input
-                {...register('materia', {
+                {...register('materia', { 
                   required: 'Campo Requerido',
                   maxLength: {
                     value: 20,
                     message: 'Máximo caracteres 20'
-                  }
-                })}
+                  }})}
                 type="text"
                 id="materia"
                 className="mt-1 p-3 block w-full rounded-md border border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
@@ -139,13 +137,12 @@ function CalificarEstudiante() {
                 Calificación:
               </label>
               <input
-                {...register('calificacion', {
+                {...register('calificacion', { 
                   required: 'Campo Requerido',
                   max: {
                     value: 20,
                     message: 'Máximo de nota 20'
-                  }
-                })}
+                  }})}
                 type="number"
                 id="calificacion"
                 className="mt-1 p-3 block w-full rounded-md border border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
@@ -159,10 +156,9 @@ function CalificarEstudiante() {
               >
                 Comentario:
               </label>
-              <textarea
-                {...register('comentario', {
-                  required: 'Campo Requerido',
-                })}
+              <textarea 
+                {...register('comentario', { 
+                  required: 'Campo Requerido',})}
                 id="comentario"
                 className="mt-1 p-3 block w-full rounded-md border border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
               />

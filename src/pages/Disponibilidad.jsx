@@ -87,17 +87,15 @@ function Disponibilidad() {
   return (
     <div className="flex justify-center items-center min-h-screen bg-gray-100">
       <Sidebar />
-      <form onSubmit={handleSubmit(onSubmit)} className="bg-white p-6 rounded-lg shadow-md w-full max-w-4xl">
+      <form onSubmit={handleSubmit(onSubmit)} className="bg-white p-6 rounded-lg shadow-md w-full max-w-3xl space-y-8">
         <h2 className="text-2xl font-bold mb-4 text-center">Modificar Horarios</h2>
-
         <div className="grid grid-cols-3 gap-4 mb-2">
           <div></div>
           <div className="text-center font-semibold">Actual</div>
           <div className="text-center font-semibold">Nuevo</div>
         </div>
-
         {["lunes", "martes", "miercoles", "jueves", "viernes", "sabado", "domingo"].map((dia) => (
-          <div key={dia} className="mb-4 grid grid-cols-3 gap-4 items-center">
+          <div key={dia} className="mb-4 grid grid-cols-3 gap-4 items-center bg-gray-200">
             <label htmlFor={dia} className="block text-gray-700 capitalize">{dia}</label>
             <input
               type="text"
@@ -112,7 +110,7 @@ function Disponibilidad() {
               {...register(dia)}
               className="border border-gray-300 p-2 rounded"
             >
-              <option value=""></option>
+              <option value="">Seleccionar horario</option>
               <option value="09:00-12:00">09:00-12:00</option>
               <option value="13:00-16:00">13:00-16:00</option>
               <option value="17:00-20:00">17:00-20:00</option>

@@ -40,31 +40,42 @@ const LoginUserPage = () => {
     <div style={{ backgroundImage: `url(${Fondo})` }} className='bg-cover bg-no-repeat bg-center h-screen bg-transparent'>
       <SideBar />
 
-      <div className='flex px-10 pb-10 pt-20 gap-4 w-screen justify-between'>
-        <div className='flex float-right gap-1'>
-          <button onClick={clearLocalStorage}>Cerrar Sesion</button>
-          <img src={Buscador} alt="" />
-          <input type="text" placeholder='Buscar' />
+      <div className='flex px-10 pb-20 pt-20 gap-4 w-screen justify-between'>
+        <div className='flex items-center gap-2'>
+          <img src={Buscador} alt="" className="h-7 w-7" />
+          <input type="text" placeholder='Buscar' className="py-2 px-36 border focus:outline-none rounded-xl shadow-xl focus:border-violet-500 focus:ring focus:ring-violet-600 focus:ring-opacity-70 pl-2" />
         </div>
-        <div className='flex float-left gap-4'>
-          <button className='bg-green-500 rounded-xl py-1 px-3'> + Nueva Asesoria</button>
+
+        <div className='flex items-center gap-4'>
+          <Link className="bg-green-500 text-white py-2 px-4 rounded-md hover:bg-green-600 transition duration-300" to="/registrarAsesoria">
+            + Nueva Asesoría
+          </Link>
           <Notifications />
           <img src={Foto} alt="" className='size-12 rounded-full' />
-          <h2>Bienvenido {nombre}</h2>
-          <p>Alumno</p>
+          <h2 className="font-bold text-gray-800">Bienvenido {nombre}</h2>
+          <p className="font-semibold text-gray-700">Alumno</p>
+          <button onClick={clearLocalStorage} className="bg-red-500 text-white py-2 px-4 rounded-md hover:bg-red-600 transition duration-300">Cerrar Sesión</button>
         </div>
       </div>
 
       <div className='grid grid-cols-3 place-items-center'>
-        <div className='flex flex-col gap-4'>
-          Asesorias
+        <div className='w-auto max-w-3xl bg-gray-300 shadow-md rounded-lg'>
+          <div className='p-4 border-b'>
+            <h2 className='text-xl font-semibold'>Asesorias</h2>
+          </div>
         </div>
 
-        <div className='flex flex-col gap-4'>
-          Tareas
+        <div className='w-auto max-w-3xl bg-gray-300 shadow-md rounded-lg'>
+          <div className='p-4 border-b'>
+            <h2 className='text-xl font-semibold'>Tareas</h2>
+          </div>
         </div>
-
-        <Sesiones userId={id} />
+        
+        <div className='w-auto max-w-3xl bg-gray-300 shadow-md rounded-lg'>
+          <div className='p-4 border-b'>
+            <Sesiones userId={id} /> {/* Usar Sesiones */}
+          </div>
+        </div>
       </div>
     </div>
   );

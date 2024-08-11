@@ -33,7 +33,7 @@ const RestablecerPage = () => {
     <>
       <Header />
       <SectionContainer>
-        <div className="flex items-center justify-center bg my-10">
+        <div className="flex items-center justify-center my-10 pt-20">
           <form className="max-w-md p-8 " onSubmit={handleSubmit}>
             <h3 className="text-4xl font-bold text-center mb-4">
               Recuperemos el acceso a tu cuenta
@@ -43,20 +43,19 @@ const RestablecerPage = () => {
               en pocos minutos..
             </p>
             <div className="mb-4">
-              <label className="text-sm font-bold">Correo</label>
+              <label className="text-lg font-bold">Correo</label>
             </div>
 
             <input
               type="email"
-              placeholder="
-         Ingresa tu correo electrónico"
+              placeholder="Ingresa tu correo electrónico"
               className="shadow border rounded w-full py-2 px-3 mb-5"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
 
             <button
-              className="bg-green-600 hover:bg-green-500 text-white font-bold py-2 px-4 rounded w-full"
+              className="bg-blue-600 hover:bg-green-500 text-white font-bold py-2 px-4 rounded w-full"
             >
               Recuperar contraseña
             </button>
@@ -69,6 +68,7 @@ const RestablecerPage = () => {
           </form>
         </div>
       </SectionContainer>
+
       <Footer />
     </>
   );

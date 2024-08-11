@@ -90,20 +90,18 @@ const Sesiones = ({ userId }) => {
   };
 
   return (
-    <div className="w-auto max-w-3xl bg-gray-300 shadow-md rounded-lg">
-      <div className="p-4 border-b">
+    <>
         <h2 className="text-xl font-semibold">Sesiones</h2>
-      </div>
-      {sesiones && sesiones.length > 0 ? (sesiones.map((sesion) => (
+      {sesiones && sesiones.length > 0 ? ( sesiones.map((sesion) => (
         <div key={sesion.idSesion}>
           <div className="p-4 space-y-4">
             <div className="grid gap-4">
               <div className="grid grid-cols-[1fr_auto] items-center gap-4 rounded-lg bg-gray-100 p-4">
                 <div className="space-y-1">
                   <div className="font-medium">Sesión con : {tipoUsuario === 'ESTUDIANTE'
-                    ? sesion.asesor.usuario.nombre
-                    : sesion.usuario.nombre}
-                    {console.log(sesion)}
+                        ? sesion.asesor.usuario.nombre
+                        : sesion.usuario.nombre}
+                      {console.log(sesion)}
                   </div>
                   <div className="text-sm text-gray-500">
                     {`${sesion.fechaHora.split('T')[0]} ${sesion.fechaHora.split('T')[1]}`}
@@ -125,8 +123,8 @@ const Sesiones = ({ userId }) => {
             </div>
           </div>
         </div>
-      ))) : null}
-    </div>
+      ))): null}
+    </>
   );
 };
 

@@ -29,7 +29,7 @@ const ConfirmarContraPage = () => {
   return (
     <>
       <Header />
-      <SectionContainer>
+      <SectionContainer className='py-20'>
         <div className="flex items-center justify-center bg my-10">
           <form className="max-w-md p-8 " onSubmit={handleSubmit}>
             <h3 className="text-4xl font-bold text-center mb-4">
@@ -41,7 +41,6 @@ const ConfirmarContraPage = () => {
             <div className="mb-4">
               <label className="text-sm font-bold">Contraseña</label>
             </div>
-
             <input
               type="text"
               placeholder="
@@ -50,14 +49,12 @@ const ConfirmarContraPage = () => {
               value={contrasena}
               onChange={(e) => setContrasena(e.target.value)}
             />
-
             <button
               type="submit"
               className="bg-green-600 hover:bg-green-500 text-white font-bold py-2 px-4 rounded w-full"
             >
               Cambiar
             </button>
-
             <div className="text-center mt-4">
               <Link to="/login" className="text-blue-500 hover:text-blue-700">
                 Volver
