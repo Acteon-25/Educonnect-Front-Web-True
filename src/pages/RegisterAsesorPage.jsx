@@ -15,6 +15,7 @@ const RegisterAsesorPage = () => {
   const [especialidad, setEspecialidad] = useState()
   const [file, setFile] = useState(null);
 
+
   async function registrarAsesor() {
     const nuevoAsesor = {
       usuario: {
@@ -110,15 +111,18 @@ const RegisterAsesorPage = () => {
                 type="file"
                 id="contenido"
                 placeholder="Ingrese sus archivos"
-                onChange={subirContenido}
+                onChange={(e) =>setFile(e.target.files[0])}
                 className="hidden"
               />
               <label
                 htmlFor="contenido"
-                className="w-full flex items-center justify-center px-4 py-2 border border-gray-300 rounded-md shadow-md text-gray-700 bg-gray-200 cursor-pointer hover:bg-gray-300 transition duration-300"
+                className={`w-full flex items-center justify-center px-4 py-2 border rounded-md shadow-md text-gray-700 cursor-pointer transition duration-300 ${
+                  file ? "border-green-500 bg-green-200" : "border-gray-300 bg-gray-200 hover:bg-gray-300"
+                }`}
               >
-                Seleccionar Contenido
+                {file ? "Archivo seleccionado" : "Seleccionar Contenido"}
               </label>
+              
             </div>
             <div className="border rounded-full py-3 px-4 grid grid-cols-1">
               <button className="bg-sky-500 hover:bg-blue-700 w-full transition duration-300 rounded-full text-white px-6 py-2 block my-4" >

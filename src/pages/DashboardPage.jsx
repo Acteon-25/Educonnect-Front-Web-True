@@ -1,13 +1,75 @@
 import { Link, useNavigate } from 'react-router-dom';
 import Foto from '../img/Foto.png';
+import axios from 'axios';
+import { useEffect } from 'react';
+import dayjs from 'dayjs';
+import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+import { Chart, registerables } from 'chart.js';
+Chart.register(...registerables);
 
 const DashboardPage = () => {
   const navigate = useNavigate();
+
+  const [value, setValue] = React.useState(dayjs(''));
+  const [value2, setValue2] = React.useState(dayjs(''));
 
   const clearLocalStorage = () => {
     localStorage.clear();
     navigate('/');
   };
+
+  async function fetchGanancias() {
+    try {
+      const response = await axios.get('/reportes/ganancias', {
+        params: {
+          inicio: `${value.$y}-${value.$M}-${value.$D}T00:00:00`,
+          fin: `${value2.$y}-${value2.$M}-${value2.$D}T23:59:59`
+        }
+      });
+      return response.data;
+    } catch (error) {
+      console.error('Error fetching ganancias data:', error);
+    }
+  }
+
+  async function renderGananciasChart() {
+    const data = await fetchGanancias();
+
+    // Suponiendo que data tiene la estructura { gananciasTotales, pagos }
+    const labels = data.pagos.map(pago => pago.fecha); // Extrae las fechas de los pagos
+    const values = data.pagos.map(pago => pago.monto); // Extrae los montos de los pagos
+
+    const ctx = document.getElementById('gananciasChart').getContext('2d');
+    new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: labels,
+        datasets: [{
+          label: 'Ganancias',
+          data: values,
+          backgroundColor: 'rgba(75, 192, 192, 0.2)',
+          borderColor: 'rgba(75, 192, 192, 1)',
+          borderWidth: 1
+        }]
+      },
+      options: {
+        scales: {
+          x: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+  }
+
+  useEffect(() => {
+    fetchGanancias();
+    renderGananciasChart();
+  }, []);
+
 
   return (
     <div className="min-h-screen bg-gray-100">
@@ -33,6 +95,23 @@ const DashboardPage = () => {
         >
           Ingresar Archivos
         </Link>
+      </div>
+      <LocalizationProvider dateAdapter={AdapterDayjs}>
+        <DemoContainer components={['DatePicker', 'DatePicker']}>
+          <DatePicker
+            label="Fecha Inicio"
+            value={value}
+            onChange={(newValue) => setValue(newValue)}
+          />
+          <DatePicker
+            label="Fecha Fin"
+            value={value2}
+            onChange={(newValue) => setValue2(newValue)}
+          />
+        </DemoContainer>
+      </LocalizationProvider>
+      <div>
+        <canvas id="gananciasChart"></canvas>
       </div>
     </div>
   );
