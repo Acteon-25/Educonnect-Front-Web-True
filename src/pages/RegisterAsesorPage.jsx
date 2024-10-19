@@ -56,7 +56,7 @@ const RegisterAsesorPage = () => {
       <Header />
       <SectionContainer className="grid p-5 gap-4 place-items-center
         sm:grid-cols-2 sm:py-12 sm:my-32
-        md:place-items-center md:my-24">
+        md:place-items-center md:my-24 mt-20">
         <img src={Profesor} alt="" className="rounded-xl shadow-lg w-full max-w-xs sm:max-w-md md:max-w-lg lg:max-w-xl" />
         <div className="">
           <h2 className="text-3xl font-bold text-center text-gray-800 py-2">Bienvenido</h2>

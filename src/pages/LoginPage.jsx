@@ -71,7 +71,7 @@ const LoginPage = () => {
       <SectionContainer
         className="grid p-5 gap-4 place-items-center
         sm:grid-cols-2 sm:py-16 sm:my-32
-        md:place-items-center md:my-24">
+        md:place-items-center md:my-24 mt-20">
         <img src={Alumno} alt="" className="rounded-xl shadow-lg w-full max-w-xs sm:max-w-md md:max-w-lg lg:max-w-xl" />
         <form onSubmit={handleSubmit} className="px-4 ">
           <h2 className="text-3xl font-bold text-center">Bienvenido</h2>
